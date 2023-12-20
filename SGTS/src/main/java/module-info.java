@@ -7,7 +7,11 @@ module chart.chartop {
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
+
+
 
     opens chart.chartop to javafx.fxml;
     exports chart.chartop;
+
 }

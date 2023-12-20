@@ -25,6 +25,6 @@ public class StudentCourseTrackerController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        System.out.println("Username: " + username + ", Password: " + password);
+        System.out.println(STR."Username: \{username}, Password: \{password}");
     }
 }

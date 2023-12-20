@@ -29,6 +29,7 @@ public class chartController implements Initializable {
 
     @FXML
     public TableView<User> table1;
+    
     public TableColumn<User,String> course;
     @FXML
     public TableColumn<User,Integer> score;

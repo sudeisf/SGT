@@ -9,14 +9,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class registerApp extends Application {
-
-
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(registerApp.class.getResource("register2.fxml"));
-
+        FXMLLoader fxmlLoader = new FXMLLoader(registerApp.class.getResource("register.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 760);
-        stage.setTitle("Course Adding");
+        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }

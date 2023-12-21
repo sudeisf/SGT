@@ -6,25 +6,28 @@ import javafx.scene.control.TextField;
 
 public class StudentCourseTrackerController {
 
-    @FXML
-    private Button ClickMe;
 
+    @FXML
+    private TextField Department;
+
+    @FXML
+    private TextField first_name;
+
+    @FXML
+    private TextField last_name;
+
+    @FXML
+    private Button next1;
+
+    @FXML
+    private TextField studID;
     @FXML
     private TextField usernameField;
 
     @FXML
     private TextField passwordField;
 
-    @FXML
-    public void initialize() {
 
-        ClickMe.setOnAction(e -> handleLogin());
-    }
 
-    private void handleLogin() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
 
-        System.out.println(STR."Username: \{username}, Password: \{password}");
-    }
 }

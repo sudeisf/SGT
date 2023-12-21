@@ -10,22 +10,33 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class chartController implements Initializable {
+    @FXML
+    private Button addSemester;
+
+    @FXML
+    private TextField r_department;
+
+    @FXML
+    private TextField r_firstname;
+
+    @FXML
+    private TextField r_lastname;
+
+    @FXML
+    private TextField r_studID;
 
     @FXML
     public BarChart<String,Integer> ChartBox;
 
-    @FXML
-    private Label Mean;
-
-    @FXML
-    private Label Median;
+      @FXML
+     public Label Mean;
+       @FXML
+     public Label Median;
 
     @FXML
     public TableView<User> table1;
@@ -102,7 +113,7 @@ public class chartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-  XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+  //XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
 
         course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
         score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));

@@ -24,7 +24,7 @@ public class database {
             state.executeUpdate(createDepartmentTable);
 
             String createStudentsTable = "CREATE TABLE IF NOT EXISTS Students (" +
-                    "SatudentID INTEGER PRIMARY KEY," +
+                    "StudentID INTEGER PRIMARY KEY," +
                     "FirstName TEXT NOT NULL," +
                     "LastName TEXT NOT NULL," +
                     "Age INTEGER," +

@@ -16,11 +16,29 @@ public class logincontroller implements Initializable {
     private Button Register;
 
     @FXML
+    public Button login;
+    @FXML
     private void handleButtonClick(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        regApp page = new regApp();
+        RegistrationDataEntry page = new RegistrationDataEntry();
+
         page.start(stage);
        
+    }
+    @FXML
+    public void ClosePage() throws IOException {
+        Stage stage = new Stage();
+        LoginApp log=new LoginApp();
+        log.close(stage);
+    }
+
+    @FXML
+    private void chartPage(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        ChartDisplayApp page = new ChartDisplayApp();
+
+        page.start(stage);
+
     }
 
      @Override

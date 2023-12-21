@@ -1,18 +1,19 @@
 package chart.chartop;
 
+
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class ChartApp extends Application {
+public class RegistrationDataEntry extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ChartApp.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 900, 760);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(RegistrationDataEntry.class.getResource("register.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 275);
+        stage.setTitle("Registration");
         stage.setScene(scene);
         stage.show();
     }

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chart.chartop.StudentCourseTrackerController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chart.chartop.RegistrationDataEntryController">
    <children>
       <Pane prefHeight="400.0" prefWidth="560.0" style="-fx-background-color: a0b2a6;">
          <children>
@@ -28,7 +28,7 @@
             <TextField fx:id="last_name" layoutX="170.0" layoutY="79.0" promptText="last name" style="-fx-background-color: white;" />
             <TextField fx:id="studID" layoutX="170.0" layoutY="116.0" promptText="student ID" style="-fx-background-color: white;" />
             <TextField fx:id="Department" layoutX="170.0" layoutY="151.0" promptText="Department" style="-fx-background-color: white;" />
-            <Button fx:id="next1" layoutX="191.0" layoutY="207.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="87.0" style="-fx-background-color: eabda8;" text="next" textAlignment="CENTER" textFill="#f8f5f5" />
+            <Button fx:id="next1" layoutX="191.0" layoutY="207.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="27.0" prefWidth="87.0" style="-fx-background-color: eabda8;" text="next" textAlignment="CENTER" textFill="#f8f5f5" />
          </children>
       </Pane>
    </children>

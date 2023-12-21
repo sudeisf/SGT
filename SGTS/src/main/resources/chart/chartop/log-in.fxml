@@ -43,7 +43,8 @@
             <TextField layoutX="65.0" layoutY="213.0" prefHeight="25.0" prefWidth="200.0" promptText="please enter your name" style="-fx-background-color: black;" />
             <TextField layoutX="65.0" layoutY="282.0" prefHeight="25.0" prefWidth="200.0" promptText="passsword" style="-fx-background-color: black;" />
          <Label layoutX="93.0" layoutY="372.0" text="have no account?" />
-         <Button fx:id="Register" layoutX="185.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleButtonClick" style="-fx-background-color: #FBF6EE;" text="Register" textFill="#19a2f7" />
+         <Button fx:id="Register" layoutX="185.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleButtonClick" onMouseClicked="#ClosePage" onMouseMoved="#ClosePage" onMousePressed="#ClosePage" onMouseReleased="#ClosePage" style="-fx-background-color: #FBF6EE;" text="Register" textFill="#19a2f7" />
+         <Button fx:id="login" layoutX="139.0" layoutY="318.0" mnemonicParsing="false" onAction="#chartPage" text="login" />
         </AnchorPane>
     </SplitPane>
 </VBox>

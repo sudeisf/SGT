@@ -1,23 +1,18 @@
-
 package chart.chartop;
-
-
-import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class courseAdd extends Application {
+import java.io.IOException;
 
-
+public class ChartDisplayApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(courseAdd.class.getResource("register2.fxml"));
-
+        FXMLLoader fxmlLoader = new FXMLLoader(ChartDisplayApp.class.getResource("chart-display.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 760);
-        stage.setTitle("Course Adding");
+        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
@@ -26,4 +21,3 @@ public class courseAdd extends Application {
         launch();
     }
 }
-

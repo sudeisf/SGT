@@ -13,22 +13,11 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 public class chartController implements Initializable {
-    @FXML
-    private Button addSemester;
 
-    @FXML
-    private TextField r_department;
 
-    @FXML
-    private TextField r_firstname;
-
-    @FXML
-    private TextField r_lastname;
-
-    @FXML
-    private TextField r_studID;
 
     @FXML
     public BarChart<String,Integer> ChartBox;

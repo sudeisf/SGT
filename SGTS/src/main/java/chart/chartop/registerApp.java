@@ -16,7 +16,7 @@ public class registerApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(registerApp.class.getResource("register2.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 900, 760);
-        stage.setTitle("Registration");
+        stage.setTitle("Course Adding");
         stage.setScene(scene);
         stage.show();
     }

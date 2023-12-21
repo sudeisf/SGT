@@ -130,7 +130,7 @@ public class database {
         }
     }
     public static void main(String[] args) {
-       // createDatabase();
+        createDatabase();
 
         try {
             // Establish a database connection
@@ -173,7 +173,7 @@ public class database {
             insertTeacherData(con, 1, "Professor", "Smith", "Male", 1);
             insertTeacherData(con, 2, "Professor", "Johnson", "Male", 2);
             insertTeacherData(con, 3, "Professor", "Brown", "Male", 3);
-
+            insertTeacherData(con, 4, "Instructor", "windy", "Female", 3);
             // Insert sample data for Semesters
             insertSemesterData(con, 1, "Fall 2022");
             insertSemesterData(con, 2, "Spring 2023");

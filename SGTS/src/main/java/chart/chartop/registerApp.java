@@ -1,3 +1,4 @@
+
 package chart.chartop;
 
 
@@ -9,11 +10,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class registerApp extends Application {
+
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(registerApp.class.getResource("register.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(registerApp.class.getResource("register2.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load(), 900, 760);
-        stage.setTitle("Hello!");
+        stage.setTitle("Course Adding");
         stage.setScene(scene);
         stage.show();
     }
@@ -22,3 +26,4 @@ public class registerApp extends Application {
         launch();
     }
 }
+

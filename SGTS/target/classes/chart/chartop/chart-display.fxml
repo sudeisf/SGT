@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="770.0" prefWidth="1016.0" spacing="8.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chart.chartop.chartController">
+    <padding>
+        <Insets bottom="-2.0" left="20.0" right="20.0" top="10.0" />
+    </padding>
+   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClicked" prefHeight="722.0" prefWidth="976.0" style="-fx-background-color: whitesmoke;">
+      <children>
+         <BarChart fx:id="ChartBox" alternativeColumnFillVisible="true" barGap="15.0" cache="true" categoryGap="2.0" disable="true" focusTraversable="true" layoutX="56.0" layoutY="300.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="307.0" prefWidth="805.0" style="-fx-bar-gap: 1px;" title="semester-I">
+           <xAxis>
+             <CategoryAxis side="BOTTOM" />
+           </xAxis>
+           <yAxis>
+             <NumberAxis side="LEFT" />
+           </yAxis>
+         </BarChart>
+         <TableView fx:id="table1" layoutX="351.0" layoutY="27.0" onMouseClicked="#handleMouseClicked" prefHeight="200.0" prefWidth="503.0">
+           <columns>
+             <TableColumn fx:id="course" prefWidth="194.4000244140625" text="course" />
+             <TableColumn fx:id="score" minWidth="0.0" prefWidth="98.4000244140625" text="score" />
+               <TableColumn prefWidth="75.0" text="Column X" />
+               <TableColumn prefWidth="134.20001220703125" text="Column X" />
+           </columns>
+         </TableView>
+         <Button fx:id="previous" layoutX="585.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #f70776;" text="previous" textFill="WHITE" />
+         <Button fx:id="next" layoutX="715.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #455d7a;" text="next" textFill="WHITE" />
+         <Label layoutX="63.0" layoutY="65.0" prefHeight="40.0" prefWidth="108.0" text="Student Name:">
+            <font>
+               <Font name="Georgia Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="63.0" layoutY="97.0" prefHeight="40.0" prefWidth="108.0" text="Student Id:">
+            <font>
+               <Font name="Georgia Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="63.0" layoutY="127.0" prefHeight="40.0" prefWidth="108.0" text="Department :">
+            <font>
+               <Font name="Georgia Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="63.0" layoutY="159.0" prefHeight="40.0" prefWidth="108.0" text="Semester :">
+            <font>
+               <Font name="Georgia Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="182.0" layoutY="69.0" prefHeight="25.0" prefWidth="174.0" text="unknown" />
+         <Label layoutX="182.0" layoutY="105.0" prefHeight="25.0" prefWidth="174.0" text="unknown" />
+         <Label layoutX="182.0" layoutY="135.0" prefHeight="25.0" prefWidth="174.0" text="unkown" />
+         <Label layoutX="182.0" layoutY="167.0" prefHeight="25.0" prefWidth="174.0" text="unknown" />
+         <Label fx:id="Mean" layoutX="379.0" layoutY="599.0" text="........." />
+         <Label fx:id="Median" layoutX="379.0" layoutY="616.0" text="........." />
+         <Label layoutX="336.0" layoutY="599.0" text="mean" />
+         <Label layoutX="336.0" layoutY="616.0" text="median" />
+      </children>
+   </Pane>
+
+    <Label fx:id="welcomeText" />
+</VBox>

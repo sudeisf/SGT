@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="770.0" prefWidth="1016.0" spacing="8.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chart.chartop.StudentCourseTrackerController">
+<VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="770.0" prefWidth="1016.0" spacing="8.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chart.chartop.logincontroller">
 
     <SplitPane dividerPositions="0.5670995670995671" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="423.0" prefWidth="373.0" style="-fx-background-color: #B6C4B6;">
@@ -43,7 +43,7 @@
             <TextField layoutX="65.0" layoutY="213.0" prefHeight="25.0" prefWidth="200.0" promptText="please enter your name" style="-fx-background-color: black;" />
             <TextField layoutX="65.0" layoutY="282.0" prefHeight="25.0" prefWidth="200.0" promptText="passsword" style="-fx-background-color: black;" />
          <Label layoutX="93.0" layoutY="372.0" text="have no account?" />
-         <Button fx:id="Register" layoutX="185.0" layoutY="368.0" mnemonicParsing="false"  style="-fx-background-color: #FBF6EE;" text="Register" textFill="#19a2f7" />
+         <Button fx:id="Register" layoutX="185.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleButtonClick" style="-fx-background-color: #FBF6EE;" text="Register" textFill="#19a2f7" />
         </AnchorPane>
     </SplitPane>
 </VBox>

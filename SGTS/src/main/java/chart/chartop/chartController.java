@@ -10,15 +10,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 
 public class chartController implements Initializable {
-
-
-
+    
     @FXML
     public BarChart<String,Integer> ChartBox;
 
@@ -33,6 +32,12 @@ public class chartController implements Initializable {
     public TableColumn<User,String> course;
     @FXML
     public TableColumn<User,Integer> score;
+
+    @FXML
+    private Label studentid;
+
+    @FXML
+    private Label studentname;
 
     @FXML
     private void handleMouseClicked(MouseEvent event) {
@@ -77,12 +82,10 @@ public class chartController implements Initializable {
         Median.setText(Float.toString(median));
 
 
-
         // Set the bar and category gaps
         ChartBox.setBarGap(2.0);
         ChartBox.setCategoryGap(2.0);
     }
-
 
     ObservableList<User> list = FXCollections.observableArrayList(
             new User("Operating system",60),
@@ -91,9 +94,6 @@ public class chartController implements Initializable {
             new User("Data structure and algorithm",85),
             new User("Object oriented",66),
             new User("Networking",94)
-
-
-
 
     );
 
@@ -104,9 +104,11 @@ public class chartController implements Initializable {
 
   //XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
 
-        course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
-        score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));
+      course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
+      score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));
       table1.setItems(list);
+      studentname.setText(logincontroller.user);
+      studentid.setText(Integer.toString(logincontroller.user_i));
 
     }
 }

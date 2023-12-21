@@ -2,13 +2,12 @@ package chart.chartop;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +19,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class logincontroller implements Initializable {
+    public int userId;
+    public String username;
+    public static String user;
+    public static int user_i;
 
     static String url = "jdbc:sqlite:student.db";
 
@@ -53,9 +56,10 @@ public class logincontroller implements Initializable {
     @FXML
     private void chartPage(ActionEvent event) throws IOException {
 
-        int userId = Integer.parseInt(ID.getText());
-        String username = name.getText();
-
+         userId = Integer.parseInt(ID.getText());
+         username = name.getText();
+         user = username;
+         user_i = userId;
 
         try (Connection connection = DriverManager.getConnection(url)){
 
@@ -63,8 +67,8 @@ public class logincontroller implements Initializable {
             if (idExists(connection, "Students", "StudentID","FirstName", userId,username)) {
                 Stage stage = new Stage();
                 ChartDisplayApp page = new ChartDisplayApp();
-
                 page.start(stage);
+
             } else {
                 // Create an alert
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -102,7 +106,7 @@ public class logincontroller implements Initializable {
 
      @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        
     }
 
 }

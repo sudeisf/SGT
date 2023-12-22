@@ -45,7 +45,9 @@ public class database {
                     "CourseName TEXT NOT NULL," +
                     "Credits INTEGER," +
                     "SemesterID INTEGER," +
-                    " FOREIGN KEY (SemesterID) REFERENCES Semester(SemesterID)" +
+                    "StudentID INTEGER," +
+                    " FOREIGN KEY (SemesterID) REFERENCES Semester(SemesterID)," +
+                    "FOREIGN KEY (StudentID) REFERENCES Semester(StudentID)" +
                     ")";
             state.executeUpdate(createCoursesTable);
 

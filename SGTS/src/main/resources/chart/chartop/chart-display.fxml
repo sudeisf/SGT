@@ -58,9 +58,15 @@
          <Label fx:id="DepartmentID" layoutX="117.0" layoutY="136.0" prefHeight="25.0" prefWidth="62.0" text="unkown" />
          <Label layoutX="100.0" layoutY="168.0" prefHeight="25.0" prefWidth="39.0" text="1" />
          <Label fx:id="Mean" layoutX="339.0" layoutY="643.0" text="........." />
-         <Label fx:id="Median" layoutX="345.0" layoutY="660.0" text="........." />
-         <Label layoutX="300.0" layoutY="643.0" text="mean" />
-         <Label layoutX="300.0" layoutY="660.0" text="median" />
+         <Label fx:id="Median" layoutX="350.0" layoutY="671.0" text="........." />
+         <Label layoutX="300.0" layoutY="643.0" text="mean">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <Label layoutX="298.0" layoutY="669.0" text="median">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
          <TableView fx:id="table2" layoutX="552.0" layoutY="37.0" onMouseClicked="#Table2MouseClicked" prefHeight="200.0" prefWidth="192.0">
            <columns>
              <TableColumn fx:id="course2" prefWidth="75.0" text="course" />

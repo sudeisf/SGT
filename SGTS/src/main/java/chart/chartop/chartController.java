@@ -1,6 +1,11 @@
 package chart.chartop;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -16,28 +21,54 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
+
 public class chartController implements Initializable {
-    
+  static String url1 = "jdbc:sqlite:student.db";
+  public static String coursename1[] =  new String [10];
+  public static String coursename2[] = new String[10];
+  public static String coursename3[] = new String[10];
+  
     @FXML
     public BarChart<String,Integer> ChartBox;
 
       @FXML
-     public Label Mean;
+    public Label Mean;
        @FXML
-     public Label Median;
+    public Label Median;
 
     @FXML
     public TableView<User> table1;
+
+    @FXML
+    private TableView<person> table2;
+
+    @FXML
+    private TableView<person2> table3;
     
     public TableColumn<User,String> course;
     @FXML
     public TableColumn<User,Integer> score;
 
     @FXML
+    private TableColumn<person, String> course2;
+
+    @FXML
+    private TableColumn<person2, String> course3;
+    
+    @FXML
+    private TableColumn<person, Integer> score2;
+
+    @FXML
+    private TableColumn<person2, Integer> score3;
+
+    @FXML
     private Label studentid;
 
     @FXML
     private Label studentname;
+
+    @FXML
+    private Label DepartmentID;
 
     @FXML
     private void handleMouseClicked(MouseEvent event) {
@@ -87,28 +118,88 @@ public class chartController implements Initializable {
         ChartBox.setCategoryGap(2.0);
     }
 
-    ObservableList<User> list = FXCollections.observableArrayList(
-            new User("Operating system",60),
-            new User("Computer organization",93),
-            new User("Statistics and prob",70),
-            new User("Data structure and algorithm",85),
-            new User("Object oriented",66),
-            new User("Networking",94)
-
-    );
+   
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+      try (Connection connection = DriverManager.getConnection(url1)){
 
+       String query2 = "SELECT " + "CourseName" + " FROM " + "Courses";
+  
+        try (PreparedStatement preparedStatements = connection.prepareStatement(query2)) {
+       int i = 0;
+       int j = 0;
+       int k = 0;
+       try (ResultSet resultSets = preparedStatements.executeQuery()) {
+        while (resultSets.next()){
+          if (i < 6){
+            coursename1[i] = resultSets.getString("CourseName");
+            i++;
+          }
 
-  //XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+          else if (i < 12){
+            coursename2[j] = resultSets.getString("CourseName");
+            j++;
+            i++;
+          }
+
+          else if (i >= 12) {
+            coursename3[k] = resultSets.getString("CourseName");
+            k++;
+            i++;
+          }
+        }
+       }
+
+       }
+      } catch (SQLException e) {
+        e.printStackTrace();
+    }
 
       course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
       score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));
+      ObservableList<User> list = FXCollections.observableArrayList(
+            new User(coursename1[0],60),
+            new User(coursename1[1],93),
+            new User(coursename1[2],70),
+            new User(coursename1[3],85),
+            new User(coursename1[4],66),
+            new User(coursename1[5],94)
+
+     );
+      
+      course2.setCellValueFactory(new PropertyValueFactory<person,String>("course"));
+      score2.setCellValueFactory(new PropertyValueFactory<person, Integer>("score"));
+      ObservableList<person> list2 = FXCollections.observableArrayList(
+            new person(coursename2[0],60),
+            new person(coursename2[1],93),
+            new person(coursename2[2],70),
+            new person(coursename2[3],85),
+            new person(coursename2[4],66),
+            new person(coursename2[5],94)
+
+      );
+      
+      course3.setCellValueFactory(new PropertyValueFactory<person2,String>("course"));
+      score3.setCellValueFactory(new PropertyValueFactory<person2, Integer>("score"));
+       ObservableList<person2> list3 = FXCollections.observableArrayList(
+            new person2(coursename3[0],60),
+            new person2(coursename3[1],93),
+            new  person2(coursename3[2],70),
+            new person2(coursename3[3],85),
+            new person2(coursename3[4],66),
+            new person2(coursename3[5],94)
+
+      );
+      
       table1.setItems(list);
+      table3.setItems(list3);
+      table2.setItems(list2);
       studentname.setText(logincontroller.user);
       studentid.setText(Integer.toString(logincontroller.user_i));
+      DepartmentID.setText(logincontroller.deptname);
+      
 
     }
 }

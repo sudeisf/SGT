@@ -19,7 +19,7 @@ public class LoginApp extends Application {
     }
    public void close(Stage stage) throws IOException{
        FXMLLoader fxmlLoader = new FXMLLoader(RegistrationDataEntry.class.getResource("log-in.fxml"));
-       Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+       Scene scene = new Scene(fxmlLoader.load(), 800, 600);
        stage.setTitle("Log in");
        stage.setScene(scene);
         stage.close();

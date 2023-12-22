@@ -2,19 +2,19 @@ package chart.chartop;
   
 
 public class person2 {
-      private static String course3 = null;
-      private static int score3 = 0;
+      private final String course3;
+      private final int score3;
 
     public person2(String course, int score) {
-        course3 = course;
-        score3 = score;
+        this.course3 = course;
+        this.score3 = score;
     }
 
-    public static String getCourse() {
+    public String getCourse() {
         return course3;
     }
 
-    public static int getScore() {
+    public int getScore() {
         return score3;
     }
 }

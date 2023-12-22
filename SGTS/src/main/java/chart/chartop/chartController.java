@@ -179,7 +179,7 @@ public class chartController implements Initializable {
         int i = 0;
 
         // Iterate through all rows in the table
-        for (person person : table2.getItems()) {
+        for (person2 person2 : table3.getItems()) {
             // Create a series for each user
             XYChart.Series<String, Integer> series = new XYChart.Series<>();
             series.setName(person2.getCourse());
@@ -189,10 +189,10 @@ public class chartController implements Initializable {
             ChartBox.getData().add(series);
 
             // Adding the score
-            sum = sum + person.getScore();
+            sum = sum + person2.getScore();
 
             // Appending the score into the array
-            sort[i] = person.getScore();
+            sort[i] = person2.getScore();
             i++;
         }
         Arrays.sort(sort);
@@ -236,8 +236,9 @@ public class chartController implements Initializable {
             i++;
           }
 
-          else if (i >= 12) {
+          else {
             coursename3[k] = resultSets.getString("CourseName");
+            System.out.println(coursename3[k]);
             k++;
             i++;
           }
@@ -275,17 +276,18 @@ public class chartController implements Initializable {
       
       course3.setCellValueFactory(new PropertyValueFactory<person2,String>("course"));
       score3.setCellValueFactory(new PropertyValueFactory<person2, Integer>("score"));
-       ObservableList<person2> list3 = FXCollections.observableArrayList(
-            new person2(coursename3[0],60),
-            new person2(coursename3[1],93),
-            new  person2(coursename3[2],70),
-            new person2(coursename3[3],85),
-            new person2(coursename3[4],66),
-            new person2(coursename3[5],94)
+       ObservableList<person2> list3;
+        list3 = FXCollections.observableArrayList(
+             new person2(coursename3[0],60),
+             new person2(coursename3[1],93),
+             new  person2(coursename3[2],70),
+             new person2(coursename3[3],85),
+             new person2(coursename3[4],66),
+             new person2(coursename3[5],94)
 
-      );
-      
-      table1.setItems(list);
+       );
+
+        table1.setItems(list);
       table3.setItems(list3);
       table2.setItems(list2);
       studentname.setText(logincontroller.user);

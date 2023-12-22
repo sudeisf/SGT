@@ -203,7 +203,7 @@ public class database {
             insertSemesterData(con, 2, "Spring 2023");
             insertSemesterData(con, 3, "Summer 2023");
 
-            // Insert sample data for Scores with scores as percentages
+            // Insert sample data for Scores with scores
             insertScoreData(con, 1, "Introduction to Programming", "John Doe", 90);
             insertScoreData(con, 2, "Calculus I", "Jane Smith", 85);
             insertScoreData(con, 3, "Physics 101", "Bob Johnson", 78);

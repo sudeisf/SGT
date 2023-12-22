@@ -179,7 +179,7 @@ public class CourseEntryController implements Initializable {
 
     }
     @FXML
-    void nextToLogin(ActionEvent event) throws SQLException {
+    public void nextToLogin(ActionEvent event) throws SQLException {
         // Retrieve data from text fields
 
         Float introToPro = Float.parseFloat(IntroToProgrammingTextField.getText());

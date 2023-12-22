@@ -60,6 +60,16 @@ public class database {
 
             state.executeUpdate(createTeachersTable);
 
+            String createScoreTable = "CREATE TABLE IF NOT EXISTS Scores (" +
+                    "StudentID INTEGER," +
+                    "CourseName TEXT," +
+                    "StudentName TEXT," +
+                    "Score INTEGER," +
+                    "PRIMARY KEY (StudentID, CourseName)," +
+                    " FOREIGN KEY (StudentID) REFERENCES Students(StudentID)," +
+                    " FOREIGN KEY (CourseName) REFERENCES Courses(CourseName)" +
+                    ")";
+            state.executeUpdate(createScoreTable);
 
 
         } catch (SQLException ex) {
@@ -129,6 +139,20 @@ public class database {
             System.out.println(e.getLocalizedMessage());
         }
     }
+
+    private static void insertScoreData(Connection connection, int studentID, String courseName, String studentName, int score) {
+        String insertScoreData = "INSERT INTO Scores (StudentID, CourseName, StudentName, Score) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertScoreData)) {
+            preparedStatement.setInt(1, studentID);
+            preparedStatement.setString(2, courseName);
+            preparedStatement.setString(3, studentName);
+            preparedStatement.setInt(4, score);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         createDatabase();
 
@@ -178,6 +202,11 @@ public class database {
             insertSemesterData(con, 1, "Fall 2022");
             insertSemesterData(con, 2, "Spring 2023");
             insertSemesterData(con, 3, "Summer 2023");
+
+            // Insert sample data for Scores with scores as percentages
+            insertScoreData(con, 1, "Introduction to Programming", "John Doe", 90);
+            insertScoreData(con, 2, "Calculus I", "Jane Smith", 85);
+            insertScoreData(con, 3, "Physics 101", "Bob Johnson", 78);
 
 
             con.close();

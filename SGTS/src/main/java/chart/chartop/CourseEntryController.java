@@ -261,7 +261,7 @@ public class CourseEntryController implements Initializable {
         int department_feild = Integer.parseInt(department.getText());
         String Gender = gender.getText();
 
-        // Add the data to the User2 list
+        // Add the data to the User2 list nop
           list.addAll(
                   new User2("Introduction to Programming",introToPro),
                   new User2("Calculus I",CalculusText),

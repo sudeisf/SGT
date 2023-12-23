@@ -45,15 +45,8 @@ public class logincontroller implements Initializable {
     @FXML
     private TextField name;
     
-//    @FXML
-//    private void handleButtonClick(ActionEvent event) throws IOException {
-//        Stage stage = new Stage();
-//        RegistrationDataEntry page = new RegistrationDataEntry();
-//
-//        page.start(stage);
-//
-//    }
 
+// chart page 
     @FXML
     private void chartPage(ActionEvent event) throws IOException {
             userId = Integer.parseInt(ID.getText());
@@ -62,7 +55,7 @@ public class logincontroller implements Initializable {
             user_i = userId;
 
 
-
+//
         try (Connection connection = DriverManager.getConnection(url)){
 
 

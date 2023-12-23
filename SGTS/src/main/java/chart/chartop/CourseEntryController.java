@@ -180,7 +180,7 @@ public class CourseEntryController implements Initializable {
     @FXML
     private TextField thermodynamicsTexrFeild;
 
-
+  //this is button function that close the current page and update the new one
     @FXML
     void nextToLog(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -192,13 +192,12 @@ public class CourseEntryController implements Initializable {
 
 
     }
+    // this function saves data in to the database and show case the values inside the tables in gui 
     @FXML
     public void nextToLogin(ActionEvent event) throws SQLException {
 
 
 
-        //String firstName = registrationDataEntryController.getFistNameTextvalue();
-        //int StudId = Integer.parseInt(registrationDataEntryController.getStudentIdTextValue());
 
 
         // Retrieve data from text fields
@@ -284,7 +283,6 @@ public class CourseEntryController implements Initializable {
                   new User4("Quantum mechanics",QmechanicsText)
           );
           Connection conn = DriverManager.getConnection("jdbc:sqlite:student.db");
-          //"INSERT INTO Scores (StudentID, CourseName, StudentName, Score) VALUES (?, ?, ?, ?)"
         // first semester
             database.insertScoreData(conn,studId,programingLabel,firstname,introToPro);
             database.insertScoreData(conn,studId,calculusLabel,firstname,CalculusText);
@@ -338,9 +336,6 @@ public class CourseEntryController implements Initializable {
         tableView2.setItems(list2);
         tableView3.setItems(list3);
 
-
-
-        // Clear the text fields for the next input
 
     }
 

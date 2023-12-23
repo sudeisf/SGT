@@ -1,6 +1,6 @@
 package chart.chartop;
 
-//importing packages
+//importing needed packages
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

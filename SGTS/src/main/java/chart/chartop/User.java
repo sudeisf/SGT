@@ -59,38 +59,25 @@ public class User {
         else return Grade.F;
     }
 
-    /**
-     * Getter method to retrieve the course.
-     *
-     * @return The course name.
-     */
+    //Getter method to retrieve the course.
     public String getCourse() {
         return course2;
     }
 
-    /**
-     * Getter method to retrieve the score.
-     *
-     * @return The score obtained by the student.
-     */
+    //Getter method to retrieve the score.
+
     public int getScore() {
         return score2;
     }
 
-    /**
-     * Getter method to retrieve the grade.
-     *
-     * @return The grade obtained based on the score.
-     */
+    //Getter method to retrieve the grade.
+
     public Grade getGrade() {
         return grade;
     }
 
-    /**
-     * Getter method to retrieve the grade value.
-     *
-     * @return The value associated with the grade.
-     */
+    //Getter method to retrieve the grade value.
+
     public int getGradeValue() {
         return gradeValue;
     }

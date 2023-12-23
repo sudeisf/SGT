@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "dbt",
+            "request": "launch",
+            "mainClass": "chart.chartop/chart.chartop.dbt",
+            "projectName": "SGTS"
+        },
+        {
+            "type": "java",
+            "name": "database",
+            "request": "launch",
+            "mainClass": "chart.chartop/chart.chartop.database",
+            "projectName": "SGTS"
+        },
+        {
+            "type": "java",
+            "name": "LoginApp",
+            "request": "launch",
+            "mainClass": "chart.chartop/chart.chartop.LoginApp",
+            "projectName": "SGTS"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

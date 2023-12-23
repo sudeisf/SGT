@@ -42,7 +42,7 @@ public class database {
             state.executeUpdate(createSemesterTable);
 
             String createCoursesTable = "CREATE TABLE IF NOT EXISTS Courses (" +
-                    "CourseID TEXT PRIMARY KEY," +
+                    "CourseID INTEGER PRIMARY KEY," +
                     "CourseName TEXT NOT NULL," +
                     "Credits INTEGER," +
                     "SemesterID INTEGER," +
@@ -65,12 +65,12 @@ public class database {
 
             String createScoreTable = "CREATE TABLE IF NOT EXISTS Scores (" +
                     "StudentID INTEGER," +
-                    "CourseName TEXT," +
+                    "CourseID INTEGER," +
                     "StudentName TEXT," +
                     "Score float," +
-                    "PRIMARY KEY (StudentID, CourseName)," +
+                    "PRIMARY KEY (StudentID, CourseID)," +
                     " FOREIGN KEY (StudentID) REFERENCES Students(StudentID)," +
-                    " FOREIGN KEY (CourseName) REFERENCES Courses(CourseName)" +
+                    " FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)" +
                     ")";
             state.executeUpdate(createScoreTable);
 
@@ -105,10 +105,10 @@ public class database {
         }
     }
 
-    private static void insertCourseData(Connection connection, String courseID, String courseName, int credits, int SemesterID) {
+    private static void insertCourseData(Connection connection, int courseID, String courseName, int credits, int SemesterID) {
         String insertDataSQL = "INSERT INTO Courses (CourseID, CourseName, Credits, SemesterID) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertDataSQL)) {
-            preparedStatement.setString(1, courseID);
+            preparedStatement.setInt(1, courseID);
             preparedStatement.setString(2, courseName);
             preparedStatement.setInt(3, credits);
             preparedStatement.setInt(4, SemesterID);
@@ -173,26 +173,26 @@ public class database {
 
             // Insert sample data for Courses
 
-            insertCourseData(con, "C001", "Introduction to Programming", 3, 1);
-            insertCourseData(con, "C002", "Calculus I", 4, 1);
-            insertCourseData(con, "C003", "Physics 101", 4, 1);
-            insertCourseData(con, "C004", "Data Structures", 3, 1);
-            insertCourseData(con, "C005", "Linear Algebra", 4, 1);
-            insertCourseData(con, "C006", "Electricity and Magnetism", 4, 1);
+            insertCourseData(con,1, "Introduction to Programming", 3, 1);
+            insertCourseData(con,2 , "Calculus I", 4, 1);
+            insertCourseData(con,3 , "Physics 101", 4, 1);
+            insertCourseData(con,4 , "Data Structures", 3, 1);
+            insertCourseData(con,5 , "Linear Algebra", 4, 1);
+            insertCourseData(con, 6, "Electricity and Magnetism", 4, 1);
 
-            insertCourseData(con, "C007", "Algorithms", 3, 2);
-            insertCourseData(con, "C008", "Differential Equations", 4, 2);
-            insertCourseData(con, "C009", "Optics", 4, 2);
-            insertCourseData(con, "C010", "Database Management Systems", 3, 2);
-            insertCourseData(con, "C011", "Number Theory", 4, 2);
-            insertCourseData(con, "C012", "Mechanics", 4, 2);
+            insertCourseData(con,7 , "Algorithms", 3, 2);
+            insertCourseData(con, 8, "Differential Equations", 4, 2);
+            insertCourseData(con, 9, "Optics", 4, 2);
+            insertCourseData(con, 10, "Database Management Systems", 3, 2);
+            insertCourseData(con, 11, "Number Theory", 4, 2);
+            insertCourseData(con, 12, "Mechanics", 4, 2);
 
-            insertCourseData(con, "C013", "Software Engineering", 3, 3);
-            insertCourseData(con, "C014", "Probability and Statistics", 4, 3);
-            insertCourseData(con, "C015", "Thermodynamics", 4, 3);
-            insertCourseData(con, "C016", "Computer Networks", 3, 3);
-            insertCourseData(con, "C017", "Graph Theory", 4, 3);
-            insertCourseData(con, "C018", "Quantum Mechanics", 4, 3);
+            insertCourseData(con,13 , "Software Engineering", 3, 3);
+            insertCourseData(con, 14, "Probability and Statistics", 4, 3);
+            insertCourseData(con, 15, "Thermodynamics", 4, 3);
+            insertCourseData(con,16 , "Computer Networks", 3, 3);
+            insertCourseData(con,17 , "Graph Theory", 4, 3);
+            insertCourseData(con,18 , "Quantum Mechanics", 4, 3);
 
             // Insert sample data for Teachers
             insertTeacherData(con, 1, "Professor", "Smith", "Male", 1);

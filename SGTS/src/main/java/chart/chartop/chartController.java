@@ -221,7 +221,7 @@ public class chartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
       try (Connection connection = DriverManager.getConnection(url1)){
 
-       String query2 = "SELECT " + "CourseName" + " FROM " + "Courses";
+       String query2 = "SELECT " + "CourseName" + " FROM " + "Courses" + " ORDER BY " + "CourseID";
   
         try (PreparedStatement preparedStatements = connection.prepareStatement(query2)) {
        int i = 0;
@@ -256,42 +256,44 @@ public class chartController implements Initializable {
         e.printStackTrace();
     }
 
-    try (Connection connection = DriverManager.getConnection(url1)){
-
-       String query3 = "SELECT " + "Score" + " FROM " + "Scores";
+    try (Connection connection = DriverManager.getConnection(url1)) {
+      String query3 = "SELECT " + "Score" + " FROM " + "Scores" + " WHERE " + "StudentID " + " = " + logincontroller.user_i + " ORDER BY " + "Score";
   
-        try (PreparedStatement preparedStatements = connection.prepareStatement(query3)) {
-       int a = 0;
-       int b = 0;
-       int c = 0;
-       try (ResultSet resultSets = preparedStatements.executeQuery()) {
-        while (resultSets.next()){
-          if (a<=17){
-            if ((a>=0)&&(a<6)){
-            scorevalue1[a] = resultSets.getInt("Score");
-            a++;
-          }
+      try (PreparedStatement preparedStatements = connection.prepareStatement(query3)) {
+          try (ResultSet resultSets = preparedStatements.executeQuery()) {
+              int a = 0;
+              int b = 0;
+              int c = 0;
+              System.out.println(resultSets.getInt("Score"));
+              while (resultSets.next()) {
+                 if (a <= 17){
+                    if ((a < 6) && (a >= 0)){
+                      System.out.println(resultSets.getInt("Score"));
+                    scorevalue1[a] = resultSets.getInt("Score");
+                    a++;
+                  }
 
-          else if ((a>=6)&&(a<12)){
-            scorevalue2[b] = resultSets.getInt("Score");
-            b++;
-            a++;
-          }
-         
-          else  {
-            scorevalue3[c] = resultSets.getInt("Score");
-            c++;
-            a++;
-          }
-          }
-          
-        }
-       }
+                 else if ((a >= 6) && (a < 12)){
+                     scorevalue2[b] = resultSets.getInt("Score");
+                     b++;
+                     a++;
+                  }
 
-       }
-      } catch (SQLException e) {
-        e.printStackTrace();
-    }
+                else {
+                     scorevalue3[c] = resultSets.getInt("Score");
+                   c++;
+                   a++;
+                  }
+               }
+                
+              }
+  
+          }
+      }
+  } catch (SQLException e) {
+      e.printStackTrace();
+  }
+  
 
       course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
       score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));

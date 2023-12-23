@@ -83,7 +83,7 @@ public class logincontroller implements Initializable {
                     Alert alert2 = new Alert(AlertType.INFORMATION);
                     alert2.setTitle("Information Dialog");
                     alert2.setHeaderText(null);
-                    alert2.setContentText("You Entered invalid name!");
+                    alert2.setContentText("You Entered invalid name! Please try again");
                     alert2.showAndWait();
                 } else {
                     Alert alert = new Alert(AlertType.INFORMATION);

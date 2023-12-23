@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -44,20 +45,14 @@ public class logincontroller implements Initializable {
     @FXML
     private TextField name;
     
-    @FXML
-    private void handleButtonClick(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        RegistrationDataEntry page = new RegistrationDataEntry();
-
-        page.start(stage);
-       
-    }
-    @FXML
-    public void ClosePage() throws IOException {
-        Stage stage = new Stage();
-        LoginApp log=new LoginApp();
-        log.close(stage);
-    }
+//    @FXML
+//    private void handleButtonClick(ActionEvent event) throws IOException {
+//        Stage stage = new Stage();
+//        RegistrationDataEntry page = new RegistrationDataEntry();
+//
+//        page.start(stage);
+//
+//    }
 
     @FXML
     private void chartPage(ActionEvent event) throws IOException {
@@ -106,7 +101,7 @@ public class logincontroller implements Initializable {
                 alert.showAndWait();
 
                 Stage stage = new Stage();
-                RegistrationDataEntry page = new RegistrationDataEntry();
+                CourseEntryApp page = new CourseEntryApp();
                 page.start(stage);
             }
 
@@ -130,6 +125,14 @@ public class logincontroller implements Initializable {
         }
     }
 
+    public void registerPage() throws IOException {
+        Stage stage = new Stage();
+        Scene scene = login.getScene();
+        CourseEntryApp corseC = new CourseEntryApp();
+        Stage currentStage = (Stage) scene.getWindow();
+        currentStage.close();
+        corseC.start(stage);
+    }
      @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

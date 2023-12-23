@@ -8,14 +8,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class database {
+    // Define the SQLite database URL
     static String url = "jdbc:sqlite:student1.db";
 
 
-// data base creating
+    // Method to create the necessary database tables if they do not exist
 
     public static void createDatabase() {
         try (Connection con = DriverManager.getConnection(url)) {
             Statement state = con.createStatement();
+
+            //create Department Table
 
             String createDepartmentTable = "CREATE TABLE IF NOT EXISTS Department (" +
                     "DepartmentID INTEGER PRIMARY KEY," +
@@ -23,6 +26,8 @@ public class database {
                     ")";
 
             state.executeUpdate(createDepartmentTable);
+
+            //create Students Table
 
             String createStudentsTable = "CREATE TABLE IF NOT EXISTS Students (" +
                     "StudentID INTEGER PRIMARY KEY," +
@@ -33,6 +38,7 @@ public class database {
                     " FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)" +
                     ")";
             state.executeUpdate(createStudentsTable);
+            //create Semester Table
 
             String createSemesterTable = "CREATE TABLE IF NOT EXISTS Semester (" +
                     "SemesterID INTEGER PRIMARY KEY," +
@@ -40,6 +46,8 @@ public class database {
                     ")";
 
             state.executeUpdate(createSemesterTable);
+            //create Courses Table
+
 
             String createCoursesTable = "CREATE TABLE IF NOT EXISTS Courses (" +
                     "CourseID INTEGER PRIMARY KEY," +

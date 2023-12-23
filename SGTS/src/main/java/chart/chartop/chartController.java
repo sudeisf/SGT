@@ -24,9 +24,13 @@ import javafx.scene.input.MouseEvent;
 
 public class chartController implements Initializable {
   static String url1 = "jdbc:sqlite:student.db";
-  public static String coursename1[] =  new String [10];
-  public static String coursename2[] = new String[10];
-  public static String coursename3[] = new String[10];
+  public static String coursename1[] =  new String [6];
+  public static String coursename2[] = new String[6];
+  public static String coursename3[] = new String[6];
+  public static int scorevalue1[] = new int [6];
+  public static int scorevalue2[] = new int [6];
+  public static int scorevalue3[] = new int[6];
+
   
     @FXML
     public BarChart<String,Integer> ChartBox;
@@ -225,12 +229,13 @@ public class chartController implements Initializable {
        int k = 0;
        try (ResultSet resultSets = preparedStatements.executeQuery()) {
         while (resultSets.next()){
-          if (i < 6){
+          if (i <= 17){
+             if ((i < 6) && (i >= 0)){
             coursename1[i] = resultSets.getString("CourseName");
             i++;
           }
 
-          else if (i < 12){
+          else if ((i >= 6) && (i < 12)){
             coursename2[j] = resultSets.getString("CourseName");
             j++;
             i++;
@@ -238,10 +243,48 @@ public class chartController implements Initializable {
 
           else {
             coursename3[k] = resultSets.getString("CourseName");
-            System.out.println(coursename3[k]);
             k++;
             i++;
           }
+          }
+         
+        }
+       }
+
+       }
+      } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    try (Connection connection = DriverManager.getConnection(url1)){
+
+       String query3 = "SELECT " + "Score" + " FROM " + "Scores";
+  
+        try (PreparedStatement preparedStatements = connection.prepareStatement(query3)) {
+       int a = 0;
+       int b = 0;
+       int c = 0;
+       try (ResultSet resultSets = preparedStatements.executeQuery()) {
+        while (resultSets.next()){
+          if (a<=17){
+            if ((a>=0)&&(a<6)){
+            scorevalue1[a] = resultSets.getInt("Score");
+            a++;
+          }
+
+          else if ((a>=6)&&(a<12)){
+            scorevalue2[b] = resultSets.getInt("Score");
+            b++;
+            a++;
+          }
+         
+          else  {
+            scorevalue3[c] = resultSets.getInt("Score");
+            c++;
+            a++;
+          }
+          }
+          
         }
        }
 
@@ -253,24 +296,24 @@ public class chartController implements Initializable {
       course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
       score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));
       ObservableList<User> list = FXCollections.observableArrayList(
-            new User(coursename1[0],60),
-            new User(coursename1[1],93),
-            new User(coursename1[2],70),
-            new User(coursename1[3],85),
-            new User(coursename1[4],66),
-            new User(coursename1[5],94)
+            new User(coursename1[0],scorevalue1[0]),
+            new User(coursename1[1],scorevalue1[1]),
+            new User(coursename1[2],scorevalue1[2]),
+            new User(coursename1[3],scorevalue1[3]),
+            new User(coursename1[4],scorevalue1[4]),
+            new User(coursename1[5],scorevalue1[5])
 
      );
       
       course2.setCellValueFactory(new PropertyValueFactory<person,String>("course"));
       score2.setCellValueFactory(new PropertyValueFactory<person, Integer>("score"));
       ObservableList<person> list2 = FXCollections.observableArrayList(
-            new person(coursename2[0],100),
-            new person(coursename2[1],98),
-            new person(coursename2[2],75),
-            new person(coursename2[3],90),
-            new person(coursename2[4],55),
-            new person(coursename2[5],75)
+            new person(coursename2[0],scorevalue2[0]),
+            new person(coursename2[1],scorevalue2[1]),
+            new person(coursename2[2],scorevalue2[2]),
+            new person(coursename2[3],scorevalue2[3]),
+            new person(coursename2[4],scorevalue2[4]),
+            new person(coursename2[5],scorevalue2[5])
 
       );
       
@@ -278,12 +321,12 @@ public class chartController implements Initializable {
       score3.setCellValueFactory(new PropertyValueFactory<person2, Integer>("score"));
        ObservableList<person2> list3;
         list3 = FXCollections.observableArrayList(
-             new person2(coursename3[0],60),
-             new person2(coursename3[1],93),
-             new  person2(coursename3[2],70),
-             new person2(coursename3[3],85),
-             new person2(coursename3[4],66),
-             new person2(coursename3[5],94)
+             new person2(coursename3[0],scorevalue3[0]),
+             new person2(coursename3[1],scorevalue3[1]),
+             new  person2(coursename3[2],scorevalue3[2]),
+             new person2(coursename3[3],scorevalue3[3]),
+             new person2(coursename3[4],scorevalue3[4]),
+             new person2(coursename3[5],scorevalue3[5])
 
        );
 

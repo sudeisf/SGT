@@ -61,6 +61,8 @@ public class database {
 
             state.executeUpdate(createCoursesTable);
 
+            // create teachers table
+
             String createTeachersTable = "CREATE TABLE IF NOT EXISTS Teachers (" +
                     "TeacherID INTEGER PRIMARY KEY," +
                     "FirstName TEXT NOT NULL," +
@@ -71,6 +73,7 @@ public class database {
                     ")";
 
             state.executeUpdate(createTeachersTable);
+            //crete score table
 
             String createScoreTable = "CREATE TABLE IF NOT EXISTS Scores (" +
                     "StudentID INTEGER," +
@@ -90,6 +93,7 @@ public class database {
             throw new RuntimeException(ex);
         }
     }
+    //creating insert department data
 
     private static void insertDepartmentData(Connection connection, int departmentID, String departmentName) {
         String insertDataSQL = "INSERT INTO Department (DepartmentID, DepartmentName) VALUES (?, ?)";
@@ -101,6 +105,7 @@ public class database {
             System.out.println(e.getLocalizedMessage());
         }
     }
+    // insert student data
 
     private static void insertStudentData(Connection connection, int studentID, String firstName, String lastName, String sex, int departmentID) {
         String insertDataSQL = "INSERT INTO Students (StudentID, FirstName, LastName, Sex, DepartmentID) VALUES (?, ?, ?, ?, ?)";
@@ -115,6 +120,7 @@ public class database {
             System.out.println(e.getLocalizedMessage());
         }
     }
+    // insert course data
 
     private static void insertCourseData(Connection connection, int courseID, String courseName, int credits, int SemesterID) {
         String insertDataSQL = "INSERT INTO Courses (CourseID, CourseName, Credits, SemesterID) VALUES (?, ?, ?, ?)";
@@ -129,6 +135,7 @@ public class database {
             System.out.println(e.getLocalizedMessage());
         }
     }
+    //insert teacher data
 
     private static void insertTeacherData(Connection connection, int teacherID, String firstName, String lastName, String sex, int departmentID) {
         String insertDataSQL = "INSERT INTO Teachers (TeacherID, FirstName, LastName, Sex, DepartmentID) VALUES (?, ?, ?, ?, ?)";
@@ -143,6 +150,7 @@ public class database {
             System.out.println(e.getLocalizedMessage());
         }
     }
+    //insert semester data
     public static void insertSemesterData(Connection connection, int semesterID, String semesterName) {
         String insertDataSQL = "INSERT INTO Semester (SemesterID, SemesterName) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertDataSQL)) {
@@ -153,6 +161,7 @@ public class database {
             System.out.println(e.getLocalizedMessage());
         }
     }
+    // insert score data
 
     public static void insertScoreData(Connection connection, int studentID, int courseId, String courseName, String studentName, Float score) {
         String insertScoreData = "INSERT INTO Scores (StudentID, CourseName,CourseID,StudentName, Score) VALUES (?, ?, ?, ?,?)";
@@ -167,6 +176,7 @@ public class database {
             e.printStackTrace();
         }
     }
+    // main method
 
     public static void main(String[] args) {
         createDatabase();

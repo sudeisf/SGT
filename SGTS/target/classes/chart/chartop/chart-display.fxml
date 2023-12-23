@@ -67,7 +67,7 @@
              <TableColumn fx:id="score2" prefWidth="75.0" text="score" />
            </columns>
          </TableView>
-         <TableView fx:id="table3" layoutX="782.0" layoutY="35.0" prefHeight="200.0" prefWidth="200.0">
+         <TableView fx:id="table3" layoutX="782.0" layoutY="35.0" onMouseClicked="#Table3MouseClicked" prefHeight="200.0" prefWidth="200.0">
            <columns>
              <TableColumn fx:id="course3" prefWidth="75.0" text="course" />
              <TableColumn fx:id="score3" prefWidth="75.0" text="score" />

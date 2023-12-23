@@ -13,7 +13,7 @@ public class ChartDisplayApp extends Application {
     public  void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ChartDisplayApp.class.getResource("chart-display.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 760);
-        stage.setTitle("Hello!");
+        stage.setTitle("Chart Page");
         stage.setScene(scene);
         stage.show();
     }

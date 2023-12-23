@@ -165,7 +165,53 @@ public class chartController implements Initializable {
         ChartBox.setBarGap(2.0);
         ChartBox.setCategoryGap(2.0);
     }
+   @FXML
+    private void Table3MouseClicked(MouseEvent event) {
+        // Clear existing data in the chart
+        ChartBox.getData().clear();
 
+        // Number of course the student take
+        final int  numcourse = 6;
+        // variable for storing the sum
+        int sum = 0;
+        // Array to store the score of all course
+        int[] sort = new int[numcourse];
+        int i = 0;
+
+        // Iterate through all rows in the table
+        for (person2 person2 : table3.getItems()) {
+            // Create a series for each user
+            XYChart.Series<String, Integer> series = new XYChart.Series<>();
+            series.setName(person2.getCourse());
+            series.getData().add(new XYChart.Data<>(person2.getCourse(), person2.getScore()));
+
+            // Add the series to the chart
+            ChartBox.getData().add(series);
+
+            // Adding the score
+            sum = sum + person2.getScore();
+
+            // Appending the score into the array
+            sort[i] = person2.getScore();
+            i++;
+        }
+        Arrays.sort(sort);
+        // Variable to store the median
+        float median = (float)((sort[sort.length/2-1]) + (sort[sort.length/2]))/2;
+
+
+        // variable for storing the mean
+        int mean_value = sum/numcourse;
+
+        // Displaying the Mean and Median
+        Mean.setText(Integer.toString(mean_value));
+        Median.setText(Float.toString(median));
+
+
+        // Set the bar and category gaps
+        ChartBox.setBarGap(2.0);
+        ChartBox.setCategoryGap(2.0);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -190,8 +236,9 @@ public class chartController implements Initializable {
             i++;
           }
 
-          else if (i >= 12) {
+          else {
             coursename3[k] = resultSets.getString("CourseName");
+            System.out.println(coursename3[k]);
             k++;
             i++;
           }
@@ -229,17 +276,18 @@ public class chartController implements Initializable {
       
       course3.setCellValueFactory(new PropertyValueFactory<person2,String>("course"));
       score3.setCellValueFactory(new PropertyValueFactory<person2, Integer>("score"));
-       ObservableList<person2> list3 = FXCollections.observableArrayList(
-            new person2(coursename3[0],60),
-            new person2(coursename3[1],93),
-            new  person2(coursename3[2],70),
-            new person2(coursename3[3],85),
-            new person2(coursename3[4],66),
-            new person2(coursename3[5],94)
+       ObservableList<person2> list3;
+        list3 = FXCollections.observableArrayList(
+             new person2(coursename3[0],60),
+             new person2(coursename3[1],93),
+             new  person2(coursename3[2],70),
+             new person2(coursename3[3],85),
+             new person2(coursename3[4],66),
+             new person2(coursename3[5],94)
 
-      );
-      
-      table1.setItems(list);
+       );
+
+        table1.setItems(list);
       table3.setItems(list3);
       table2.setItems(list2);
       studentname.setText(logincontroller.user);

@@ -11,7 +11,7 @@ public class database {
     static String url = "jdbc:sqlite:student1.db";
 
 
-
+// data base creating
 
     public static void createDatabase() {
         try (Connection con = DriverManager.getConnection(url)) {

@@ -28,6 +28,7 @@ public class logincontroller implements Initializable {
     public static int user_i;
     public static int deptid;
     public static String deptname;
+    public static boolean check = true;
 
     static String url = "jdbc:sqlite:student1.db";
 
@@ -46,8 +47,18 @@ public class logincontroller implements Initializable {
     // chart page
     @FXML
     private void chartPage(ActionEvent event) throws IOException {
-        userId = Integer.parseInt(ID.getText());
         username = name.getText();
+        try (Connection connection = DriverManager.getConnection(url)) {
+            userId = Integer.parseInt(ID.getText());
+        } catch (Exception e) {
+            check = false;
+            Alert alert3 = new Alert(AlertType.INFORMATION);
+            alert3.setTitle("Information Dialog");
+            alert3.setHeaderText(null);
+            alert3.setContentText("You Entered invalid ID! Please try again");
+            alert3.showAndWait();
+        }
+
         user = username;
         user_i = userId;
 
@@ -78,25 +89,27 @@ public class logincontroller implements Initializable {
 
                 page.start(stage);
             } else {
-                // Create an alert
-                if (isInteger(username)) {
-                    Alert alert2 = new Alert(AlertType.INFORMATION);
-                    alert2.setTitle("Information Dialog");
-                    alert2.setHeaderText(null);
-                    alert2.setContentText("You Entered invalid name! Please try again");
-                    alert2.showAndWait();
-                } else {
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Your are not registered yet.");
+                if (check) {
+                    // Create an alert
+                    if (isInteger(username)) {
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setTitle("Information Dialog");
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("You Entered invalid name! Please try again");
+                        alert2.showAndWait();
+                    } else {
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Your are not registered yet.");
 
-                    // Show the alert
-                    alert.showAndWait();
+                        // Show the alert
+                        alert.showAndWait();
 
-                    Stage stage = new Stage();
-                    CourseEntryApp page = new CourseEntryApp();
-                    page.start(stage);
+                        Stage stage = new Stage();
+                        CourseEntryApp page = new CourseEntryApp();
+                        page.start(stage);
+                    }
 
                 }
 

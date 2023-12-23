@@ -287,7 +287,7 @@ public class CourseEntryController implements Initializable {
                   new User4("Quantum mechanics",QmechanicsText)
           );
           Connection conn = DriverManager.getConnection("jdbc:sqlite:student1.db");
-        // first semester
+        // first semester to data base
             database.insertScoreData(conn,studId,100,programingLabel,firstname,introToPro);
             database.insertScoreData(conn,studId, 101, calculusLabel,firstname,CalculusText);
             database.insertScoreData(conn,studId, 102, physics,firstname,PhysicsText);

@@ -285,20 +285,21 @@ public class CourseEntryController implements Initializable {
           );
           Connection conn = DriverManager.getConnection("jdbc:sqlite:student.db");
           //"INSERT INTO Scores (StudentID, CourseName, StudentName, Score) VALUES (?, ?, ?, ?)"
+        // first semester
             database.insertScoreData(conn,studId,programingLabel,firstname,introToPro);
             database.insertScoreData(conn,studId,calculusLabel,firstname,CalculusText);
             database.insertScoreData(conn,studId,physics,firstname,PhysicsText);
             database.insertScoreData(conn,studId,Dsa,firstname,dsaText);
             database.insertScoreData(conn,studId,linearAlgeb,firstname,linearAlgebraText);
             database.insertScoreData(conn,studId,magnet,firstname,magnetismText);
-
+  // second semester
             database.insertScoreData(conn,studId,algorithm,firstname,AlgorithmText);
             database.insertScoreData(conn,studId,Dequations,firstname,EquationText);
             database.insertScoreData(conn,studId,opticslabel,firstname,opticsText);
             database.insertScoreData(conn,studId,database_manament_label,firstname,dataBText);
             database.insertScoreData(conn,studId,number_theory_label,firstname,numTheoryText);
             database.insertScoreData(conn,studId,mechanicslabel,firstname,mechanicsText);
-
+//third semester
             database.insertScoreData(conn,studId,swelabel,firstname,SWEText);
             database.insertScoreData(conn,studId,statisticslabel,firstname,statisticsText);
             database.insertScoreData(conn,studId,thermolabel,firstname,thermodynamicsTexr);
@@ -314,7 +315,7 @@ public class CourseEntryController implements Initializable {
 
 
         String url = "jdbc:sqlite:student.db";
-
+// updating the student class
         try (Connection connection = DriverManager.getConnection(url);
              PreparedStatement statement = connection.prepareStatement(
                      "INSERT INTO Students (StudentID, FirstName, LastName, Sex, DepartmentID) VALUES (?,?,?,?,?)")) {

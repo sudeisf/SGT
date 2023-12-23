@@ -31,7 +31,7 @@ public class logincontroller implements Initializable {
 
 
 
-    static String url = "jdbc:sqlite:student.db";
+    static String url = "jdbc:sqlite:student1.db";
 
     @FXML
     private Button Register;

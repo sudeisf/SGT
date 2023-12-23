@@ -23,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 
 
 public class chartController implements Initializable {
-  static String url1 = "jdbc:sqlite:student.db";
+  static String url1 = "jdbc:sqlite:student1.db";
   public static String coursename1[] =  new String [6];
   public static String coursename2[] = new String[6];
   public static String coursename3[] = new String[6];
@@ -221,7 +221,7 @@ public class chartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
       try (Connection connection = DriverManager.getConnection(url1)){
 
-       String query2 = "SELECT " + "CourseName" + " FROM " + "Courses" + " ORDER BY " + "CourseID";
+       String query2 = "Select CourseName From Courses ORDER BY CourseID ";
   
         try (PreparedStatement preparedStatements = connection.prepareStatement(query2)) {
        int i = 0;
@@ -256,46 +256,42 @@ public class chartController implements Initializable {
         e.printStackTrace();
     }
 
-    try (Connection connection = DriverManager.getConnection(url1)) {
-      String query3 = "SELECT " + "Score" + " FROM " + "Scores" + " WHERE " + "StudentID " + " = " + logincontroller.user_i + " ORDER BY " + "Score";
-  
-      try (PreparedStatement preparedStatements = connection.prepareStatement(query3)) {
-          try (ResultSet resultSets = preparedStatements.executeQuery()) {
-              int a = 0;
-              int b = 0;
-              int c = 0;
-              System.out.println(resultSets.getInt("Score"));
-              while (resultSets.next()) {
-                 if (a <= 17){
-                    if ((a < 6) && (a >= 0)){
-                      System.out.println(resultSets.getInt("Score"));
-                    scorevalue1[a] = resultSets.getInt("Score");
-                    a++;
-                  }
+        try (Connection connection = DriverManager.getConnection(url1)){
+            String query3 = "SELECT Score FROM Scores WHERE StudentID " +" = "+ logincontroller.user_i+ " ORDER BY CourseId";
 
-                 else if ((a >= 6) && (a < 12)){
-                     scorevalue2[b] = resultSets.getInt("Score");
-                     b++;
-                     a++;
-                  }
+            try (PreparedStatement preparedStatements = connection.prepareStatement(query3)) {
+                int a = 0;
+                int b = 0;
+                int c = 0;
+                try (ResultSet resultSets = preparedStatements.executeQuery()) {
+                    while (resultSets.next()) {
+                        System.out.println('a');
+                        if (a <= 17) {
+                            if ((a >= 0) && (a < 6)) {
+                                scorevalue1[a] = resultSets.getInt("Score");
+                                System.out.println(scorevalue1[a]); // Fix array indexing issue
+                                a++;
+                            } else if ((a >= 6) && (a < 12)) {
+                                scorevalue2[b] = resultSets.getInt("Score");
+                                b++;
+                                a++;
+                            } else {
+                                scorevalue3[c] = resultSets.getInt("Score");
+                                c++;
+                                a++;
+                            }
+                        }
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-                else {
-                     scorevalue3[c] = resultSets.getInt("Score");
-                   c++;
-                   a++;
-                  }
-               }
-                
-              }
-  
-          }
-      }
-  } catch (SQLException e) {
-      e.printStackTrace();
-  }
-  
 
-      course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
+        course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
       score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));
       ObservableList<User> list = FXCollections.observableArrayList(
             new User(coursename1[0],scorevalue1[0]),

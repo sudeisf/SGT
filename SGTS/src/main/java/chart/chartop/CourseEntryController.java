@@ -286,28 +286,28 @@ public class CourseEntryController implements Initializable {
                   new User4("Graph theory",GthoryText),
                   new User4("Quantum mechanics",QmechanicsText)
           );
-          Connection conn = DriverManager.getConnection("jdbc:sqlite:student.db");
+          Connection conn = DriverManager.getConnection("jdbc:sqlite:student1.db");
         // first semester
-            database.insertScoreData(conn,studId,programingLabel,firstname,introToPro);
-            database.insertScoreData(conn,studId,calculusLabel,firstname,CalculusText);
-            database.insertScoreData(conn,studId,physics,firstname,PhysicsText);
-            database.insertScoreData(conn,studId,Dsa,firstname,dsaText);
-            database.insertScoreData(conn,studId,linearAlgeb,firstname,linearAlgebraText);
-            database.insertScoreData(conn,studId,magnet,firstname,magnetismText);
+            database.insertScoreData(conn,studId,100,programingLabel,firstname,introToPro);
+            database.insertScoreData(conn,studId, 101, calculusLabel,firstname,CalculusText);
+            database.insertScoreData(conn,studId, 102, physics,firstname,PhysicsText);
+            database.insertScoreData(conn,studId, 103, Dsa,firstname,dsaText);
+            database.insertScoreData(conn,studId, 104, linearAlgeb,firstname,linearAlgebraText);
+            database.insertScoreData(conn,studId, 105, magnet,firstname,magnetismText);
   // second semester
-            database.insertScoreData(conn,studId,algorithm,firstname,AlgorithmText);
-            database.insertScoreData(conn,studId,Dequations,firstname,EquationText);
-            database.insertScoreData(conn,studId,opticslabel,firstname,opticsText);
-            database.insertScoreData(conn,studId,database_manament_label,firstname,dataBText);
-            database.insertScoreData(conn,studId,number_theory_label,firstname,numTheoryText);
-            database.insertScoreData(conn,studId,mechanicslabel,firstname,mechanicsText);
+            database.insertScoreData(conn,studId, 106, algorithm,firstname,AlgorithmText);
+            database.insertScoreData(conn,studId, 107, Dequations,firstname,EquationText);
+            database.insertScoreData(conn,studId, 108, opticslabel,firstname,opticsText);
+            database.insertScoreData(conn,studId, 109, database_manament_label,firstname,dataBText);
+            database.insertScoreData(conn,studId, 110, number_theory_label,firstname,numTheoryText);
+            database.insertScoreData(conn,studId, 111, mechanicslabel,firstname,mechanicsText);
 //third semester
-            database.insertScoreData(conn,studId,swelabel,firstname,SWEText);
-            database.insertScoreData(conn,studId,statisticslabel,firstname,statisticsText);
-            database.insertScoreData(conn,studId,thermolabel,firstname,thermodynamicsTexr);
-            database.insertScoreData(conn,studId,network,firstname,NetworkText);
-            database.insertScoreData(conn,studId,g_thorylabel,firstname,GthoryText);
-            database.insertScoreData(conn,studId,Qmechanicslabel,firstname,QmechanicsText);
+            database.insertScoreData(conn,studId, 112, swelabel,firstname,SWEText);
+            database.insertScoreData(conn,studId, 113, statisticslabel,firstname,statisticsText);
+            database.insertScoreData(conn,studId, 114, thermolabel,firstname,thermodynamicsTexr);
+            database.insertScoreData(conn,studId, 115, network,firstname,NetworkText);
+            database.insertScoreData(conn,studId, 116, g_thorylabel,firstname,GthoryText);
+            database.insertScoreData(conn,studId, 117, Qmechanicslabel,firstname,QmechanicsText);
 
 
         if (firstname == null || lastname == null || department == null ||  Gender == null) {
@@ -316,7 +316,7 @@ public class CourseEntryController implements Initializable {
         }
 
 
-        String url = "jdbc:sqlite:student.db";
+        String url = "jdbc:sqlite:student1.db";
 // updating the student class
         try (Connection connection = DriverManager.getConnection(url);
              PreparedStatement statement = connection.prepareStatement(

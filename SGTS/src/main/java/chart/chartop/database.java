@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class database {
-    static String url = "jdbc:sqlite:student.db";
+    static String url = "jdbc:sqlite:student1.db";
 
 
 
@@ -47,9 +47,10 @@ public class database {
                     "Credits INTEGER," +
                     "SemesterID INTEGER," +
                     "StudentID INTEGER," +
-                    " FOREIGN KEY (SemesterID) REFERENCES Semester(SemesterID)," +
-                    "FOREIGN KEY (StudentID) REFERENCES Semester(StudentID)" +
+                    "FOREIGN KEY (SemesterID) REFERENCES Semester(SemesterID)," +
+                    "FOREIGN KEY (StudentID) REFERENCES Students(StudentID)" +
                     ")";
+
             state.executeUpdate(createCoursesTable);
 
             String createTeachersTable = "CREATE TABLE IF NOT EXISTS Teachers (" +
@@ -65,13 +66,15 @@ public class database {
 
             String createScoreTable = "CREATE TABLE IF NOT EXISTS Scores (" +
                     "StudentID INTEGER," +
+                    "CourseName TEXT," +
                     "CourseID INTEGER," +
                     "StudentName TEXT," +
-                    "Score float," +
+                    "Score FLOAT," +  // Assuming you want to store floating-point numbers for scores
                     "PRIMARY KEY (StudentID, CourseID)," +
-                    " FOREIGN KEY (StudentID) REFERENCES Students(StudentID)," +
-                    " FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)" +
+                    "FOREIGN KEY (StudentID) REFERENCES Students(StudentID)," +
+                    "FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)" +
                     ")";
+
             state.executeUpdate(createScoreTable);
 
 
@@ -143,13 +146,14 @@ public class database {
         }
     }
 
-    public static void insertScoreData(Connection connection, int studentID, String courseName, String studentName, Float score) {
-        String insertScoreData = "INSERT INTO Scores (StudentID, CourseName, StudentName, Score) VALUES (?, ?, ?, ?)";
+    public static void insertScoreData(Connection connection, int studentID, int courseId, String courseName, String studentName, Float score) {
+        String insertScoreData = "INSERT INTO Scores (StudentID, CourseName,CourseID,StudentName, Score) VALUES (?, ?, ?, ?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertScoreData)) {
             preparedStatement.setInt(1, studentID);
             preparedStatement.setString(2, courseName);
-            preparedStatement.setString(3, studentName);
-            preparedStatement.setFloat(4, score);
+            preparedStatement.setInt(3,courseId);
+            preparedStatement.setString(4, studentName);
+            preparedStatement.setFloat(5, score);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -173,26 +177,26 @@ public class database {
 
             // Insert sample data for Courses
 
-            insertCourseData(con,1, "Introduction to Programming", 3, 1);
-            insertCourseData(con,2 , "Calculus I", 4, 1);
-            insertCourseData(con,3 , "Physics 101", 4, 1);
-            insertCourseData(con,4 , "Data Structures", 3, 1);
-            insertCourseData(con,5 , "Linear Algebra", 4, 1);
-            insertCourseData(con, 6, "Electricity and Magnetism", 4, 1);
+            insertCourseData(con,100, "Introduction to Programming", 3, 1);
+            insertCourseData(con,101 , "Calculus I", 4, 1);
+            insertCourseData(con,102 , "Physics 101", 4, 1);
+            insertCourseData(con,103 , "Data Structures", 3, 1);
+            insertCourseData(con,104 , "Linear Algebra", 4, 1);
+            insertCourseData(con, 105, "Electricity and Magnetism", 4, 1);
 
-            insertCourseData(con,7 , "Algorithms", 3, 2);
-            insertCourseData(con, 8, "Differential Equations", 4, 2);
-            insertCourseData(con, 9, "Optics", 4, 2);
-            insertCourseData(con, 10, "Database Management Systems", 3, 2);
-            insertCourseData(con, 11, "Number Theory", 4, 2);
-            insertCourseData(con, 12, "Mechanics", 4, 2);
+            insertCourseData(con,106 , "Algorithms", 3, 2);
+            insertCourseData(con, 107, "Differential Equations", 4, 2);
+            insertCourseData(con, 108, "Optics", 4, 2);
+            insertCourseData(con, 109, "Database Management Systems", 3, 2);
+            insertCourseData(con, 110, "Number Theory", 4, 2);
+            insertCourseData(con, 111, "Mechanics", 4, 2);
 
-            insertCourseData(con,13 , "Software Engineering", 3, 3);
-            insertCourseData(con, 14, "Probability and Statistics", 4, 3);
-            insertCourseData(con, 15, "Thermodynamics", 4, 3);
-            insertCourseData(con,16 , "Computer Networks", 3, 3);
-            insertCourseData(con,17 , "Graph Theory", 4, 3);
-            insertCourseData(con,18 , "Quantum Mechanics", 4, 3);
+            insertCourseData(con,112 , "Software Engineering", 3, 3);
+            insertCourseData(con, 113, "Probability and Statistics", 4, 3);
+            insertCourseData(con, 114, "Thermodynamics", 4, 3);
+            insertCourseData(con,115 , "Computer Networks", 3, 3);
+            insertCourseData(con,116 , "Graph Theory", 4, 3);
+            insertCourseData(con,117 , "Quantum Mechanics", 4, 3);
 
             // Insert sample data for Teachers
             insertTeacherData(con, 1, "Professor", "Smith", "Male", 1);

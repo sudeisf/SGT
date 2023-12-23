@@ -169,9 +169,7 @@ public class database {
             insertDepartmentData(con, 3, "Physics");
 
             // Insert sample data for Students
-            insertStudentData(con, 1, "John", "Doe", "Male", 1);
-            insertStudentData(con, 2, "Jane", "Smith", "Female", 2);
-            insertStudentData(con, 3, "Bob", "Johnson", "Male", 1);
+
 
             // Insert sample data for Courses
 
@@ -205,11 +203,6 @@ public class database {
             insertSemesterData(con, 1, "Fall 2022");
             insertSemesterData(con, 2, "Spring 2023");
             insertSemesterData(con, 3, "Summer 2023");
-
-            // Insert sample data for Scores with scores
-            insertScoreData(con, 1, "Introduction to Programming", "John Doe", 90.0f);
-            insertScoreData(con, 2, "Calculus I", "Jane Smith", 850.f);
-            insertScoreData(con, 3, "Physics 101", "Bob Johnson", 78.0f);
 
 
             con.close();

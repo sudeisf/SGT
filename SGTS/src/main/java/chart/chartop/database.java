@@ -1,4 +1,5 @@
-package database;
+package chart.chartop;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -66,7 +67,7 @@ public class database {
                     "StudentID INTEGER," +
                     "CourseName TEXT," +
                     "StudentName TEXT," +
-                    "Score INTEGER," +
+                    "Score float," +
                     "PRIMARY KEY (StudentID, CourseName)," +
                     " FOREIGN KEY (StudentID) REFERENCES Students(StudentID)," +
                     " FOREIGN KEY (CourseName) REFERENCES Courses(CourseName)" +
@@ -131,7 +132,7 @@ public class database {
             System.out.println(e.getLocalizedMessage());
         }
     }
-    private static void insertSemesterData(Connection connection, int semesterID, String semesterName) {
+    public static void insertSemesterData(Connection connection, int semesterID, String semesterName) {
         String insertDataSQL = "INSERT INTO Semester (SemesterID, SemesterName) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertDataSQL)) {
             preparedStatement.setInt(1, semesterID);
@@ -142,13 +143,13 @@ public class database {
         }
     }
 
-    private static void insertScoreData(Connection connection, int studentID, String courseName, String studentName, int score) {
+    public static void insertScoreData(Connection connection, int studentID, String courseName, String studentName, Float score) {
         String insertScoreData = "INSERT INTO Scores (StudentID, CourseName, StudentName, Score) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertScoreData)) {
             preparedStatement.setInt(1, studentID);
             preparedStatement.setString(2, courseName);
             preparedStatement.setString(3, studentName);
-            preparedStatement.setInt(4, score);
+            preparedStatement.setFloat(4, score);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -206,9 +207,9 @@ public class database {
             insertSemesterData(con, 3, "Summer 2023");
 
             // Insert sample data for Scores with scores
-            insertScoreData(con, 1, "Introduction to Programming", "John Doe", 90);
-            insertScoreData(con, 2, "Calculus I", "Jane Smith", 85);
-            insertScoreData(con, 3, "Physics 101", "Bob Johnson", 78);
+            insertScoreData(con, 1, "Introduction to Programming", "John Doe", 90.0f);
+            insertScoreData(con, 2, "Calculus I", "Jane Smith", 850.f);
+            insertScoreData(con, 3, "Physics 101", "Bob Johnson", 78.0f);
 
 
             con.close();
@@ -219,4 +220,5 @@ public class database {
 
 
 }
+
 

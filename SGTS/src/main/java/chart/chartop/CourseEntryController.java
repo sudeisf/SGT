@@ -1,9 +1,9 @@
 package chart.chartop;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -19,6 +19,20 @@ import javafx.stage.Stage;
 
 
 public class CourseEntryController implements Initializable {
+
+
+    @FXML
+    private TextField lastname;
+    @FXML
+    private TextField Firstname;
+    @FXML
+    private TextField department;
+    @FXML
+    private TextField gender;
+    @FXML
+    private TextField studentID;
+
+
     @FXML
     private TextField AlgorithmTextField;
 
@@ -180,26 +194,69 @@ public class CourseEntryController implements Initializable {
     }
     @FXML
     public void nextToLogin(ActionEvent event) throws SQLException {
+
+
+
+        //String firstName = registrationDataEntryController.getFistNameTextvalue();
+        //int StudId = Integer.parseInt(registrationDataEntryController.getStudentIdTextValue());
+
+
         // Retrieve data from text fields
 
-        Float introToPro = Float.parseFloat(IntroToProgrammingTextField.getText());
-        Float CalculusText = Float.parseFloat(CalculusTextFeIld.getText());
-        Float PhysicsText = Float.parseFloat(PhysicsTextFeild.getText());
-        Float dsaText = Float.parseFloat(dsaTextFeild.getText());
+        float introToPro = Float.parseFloat(IntroToProgrammingTextField.getText());
+        float CalculusText = Float.parseFloat(CalculusTextFeIld.getText());
+        float PhysicsText = Float.parseFloat(PhysicsTextFeild.getText());
+        float dsaText = Float.parseFloat(dsaTextFeild.getText());
         float linearAlgebraText = Float.parseFloat(linearAlgebraTextFeild.getText());
-        Float magnetismText = Float.parseFloat(magnetismTextFeild.getText());
-        Float AlgorithmText = Float.parseFloat(AlgorithmTextField.getText());
-        Float EquationText = Float.parseFloat(EquationTextFeild.getText());
-        Float opticsText = Float.parseFloat(opticsTextFeild.getText());
-        Float dataBText = Float.parseFloat(dataBTextFeild.getText());
-        Float numTheoryText = Float.parseFloat(numTheoryTextFeild.getText());
-        Float mechanicsText = Float.parseFloat(mechanicsTextFeild.getText());
-        Float SWEText = Float.parseFloat(SweTextFeild.getText());
-        Float statisticsText = Float.parseFloat(statisticsTextFeild.getText());
-        Float thermodynamicsTexr = Float.parseFloat(thermodynamicsTexrFeild.getText());
-        Float NetworkText = Float.parseFloat(NetworkTextFeild.getText());
-        Float GthoryText = Float.parseFloat(GthoryTextFeild.getText());
-        Float QmechanicsText = Float.parseFloat(QmechanicsTextFeild.getText());
+        float magnetismText = Float.parseFloat(magnetismTextFeild.getText());
+
+        float AlgorithmText = Float.parseFloat(AlgorithmTextField.getText());
+        float EquationText = Float.parseFloat(EquationTextFeild.getText());
+        float opticsText = Float.parseFloat(opticsTextFeild.getText());
+        float dataBText = Float.parseFloat(dataBTextFeild.getText());
+        float numTheoryText = Float.parseFloat(numTheoryTextFeild.getText());
+        float mechanicsText = Float.parseFloat(mechanicsTextFeild.getText());
+
+        float SWEText = Float.parseFloat(SweTextFeild.getText());
+        float statisticsText = Float.parseFloat(statisticsTextFeild.getText());
+        float thermodynamicsTexr = Float.parseFloat(thermodynamicsTexrFeild.getText());
+        float NetworkText = Float.parseFloat(NetworkTextFeild.getText());
+        float GthoryText = Float.parseFloat(GthoryTextFeild.getText());
+        float QmechanicsText = Float.parseFloat(QmechanicsTextFeild.getText());
+
+
+
+
+        String programingLabel = programming.getText();
+        String calculusLabel = Calculus.getText();
+        String physics = Physics.getText();
+        String Dsa = dsa.getText();
+        String linearAlgeb = linearAlgebra.getText();
+        String magnet = magnetism.getText();
+
+        String algorithm = Algorithms.getText();
+        String Dequations = Deferential_Equations.getText();
+        String opticslabel = Optics.getText();
+        String database_manament_label = Database_management.getText();
+        String number_theory_label = Number_theory.getText();
+        String mechanicslabel = Mechanics.getText();
+
+        String swelabel = Software_engineering.getText();
+        String statisticslabel = statistics.getText();
+        String thermolabel = Thermodynamics.getText();
+        String network = ComputerNewtorks.getText();
+        String g_thorylabel = Graph_theory.getText();
+        String Qmechanicslabel = Quantum_mechanics.getText();
+
+
+
+
+        //course entry
+        String firstname = Firstname.getText();
+        String lastN = lastname.getText();
+        int studId = Integer.parseInt(studentID.getText());
+        int department_feild = Integer.parseInt(department.getText());
+        String Gender = gender.getText();
 
         // Add the data to the User2 list
           list.addAll(
@@ -226,10 +283,60 @@ public class CourseEntryController implements Initializable {
                   new User4("Graph theory",GthoryText),
                   new User4("Quantum mechanics",QmechanicsText)
           );
+          Connection conn = DriverManager.getConnection("jdbc:sqlite:student.db");
+          //"INSERT INTO Scores (StudentID, CourseName, StudentName, Score) VALUES (?, ?, ?, ?)"
+            database.insertScoreData(conn,studId,programingLabel,firstname,introToPro);
+            database.insertScoreData(conn,studId,calculusLabel,firstname,CalculusText);
+            database.insertScoreData(conn,studId,physics,firstname,PhysicsText);
+            database.insertScoreData(conn,studId,Dsa,firstname,dsaText);
+            database.insertScoreData(conn,studId,linearAlgeb,firstname,linearAlgebraText);
+            database.insertScoreData(conn,studId,magnet,firstname,magnetismText);
+
+            database.insertScoreData(conn,studId,algorithm,firstname,AlgorithmText);
+            database.insertScoreData(conn,studId,Dequations,firstname,EquationText);
+            database.insertScoreData(conn,studId,opticslabel,firstname,opticsText);
+            database.insertScoreData(conn,studId,database_manament_label,firstname,dataBText);
+            database.insertScoreData(conn,studId,number_theory_label,firstname,numTheoryText);
+            database.insertScoreData(conn,studId,mechanicslabel,firstname,mechanicsText);
+
+            database.insertScoreData(conn,studId,swelabel,firstname,SWEText);
+            database.insertScoreData(conn,studId,statisticslabel,firstname,statisticsText);
+            database.insertScoreData(conn,studId,thermolabel,firstname,thermodynamicsTexr);
+            database.insertScoreData(conn,studId,network,firstname,NetworkText);
+            database.insertScoreData(conn,studId,g_thorylabel,firstname,GthoryText);
+            database.insertScoreData(conn,studId,Qmechanicslabel,firstname,QmechanicsText);
+
+
+        if (firstname == null || lastname == null || department == null ||  Gender == null) {
+            System.err.println("Error: One or more TextField is null.");
+            return;
+        }
+
+
+        String url = "jdbc:sqlite:student.db";
+
+        try (Connection connection = DriverManager.getConnection(url);
+             PreparedStatement statement = connection.prepareStatement(
+                     "INSERT INTO Students (StudentID, FirstName, LastName, Sex, DepartmentID) VALUES (?,?,?,?,?)")) {
+
+            statement.setInt(1, studId);
+            statement.setString(2, firstname);
+            statement.setString(3, lastN);
+            statement.setString(4, Gender);
+            statement.setInt(5, department_feild);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(STR."Error: \{e.getMessage()}");
+        }
+
 
         // Update the TableView
         tableView1.setItems(list);
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:student.db");
+        tableView2.setItems(list2);
+        tableView3.setItems(list3);
+
 
 
         // Clear the text fields for the next input

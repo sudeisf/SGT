@@ -16,7 +16,7 @@ public class CourseEntryApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CourseEntryApp.class.getResource("register2.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 900, 850);
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 810);
         stage.setTitle("Course Adding");
         stage.setScene(scene);
         stage.show();

@@ -24,12 +24,10 @@ public class logincontroller implements Initializable {
 
     public static int userId;
     public static String username;
-     public static String user;
+    public static String user;
     public static int user_i;
     public static int deptid;
     public static String deptname;
-
-
 
     static String url = "jdbc:sqlite:student1.db";
 
@@ -40,32 +38,30 @@ public class logincontroller implements Initializable {
     public Button login;
 
     @FXML
-    private TextField  ID;
+    private TextField ID;
 
     @FXML
     private TextField name;
-    
 
-// chart page 
+    // chart page
     @FXML
     private void chartPage(ActionEvent event) throws IOException {
-            userId = Integer.parseInt(ID.getText());
-            username = name.getText();
-            user = username;
-            user_i = userId;
+        userId = Integer.parseInt(ID.getText());
+        username = name.getText();
+        user = username;
+        user_i = userId;
 
+        //
+        try (Connection connection = DriverManager.getConnection(url)) {
 
-//
-        try (Connection connection = DriverManager.getConnection(url)){
-
-
-            if (idExists(connection, "Students", "StudentID","FirstName", userId,username)) {
+            if (idExists(connection, "Students", "StudentID", "FirstName", userId, username)) {
                 String query = "SELECT " + "DepartmentID" + " FROM " + "Students" + " WHERE " + "StudentID" + " = ?";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                     preparedStatement.setInt(1, userId);
                     try (ResultSet resultSet = preparedStatement.executeQuery()) {
                         deptid = resultSet.getInt("DepartmentID");
-                        String query2 = "SELECT " + "DepartmentName" + " FROM " + "Department" + " WHERE " + "DepartmentID" + " = ?";
+                        String query2 = "SELECT " + "DepartmentName" + " FROM " + "Department" + " WHERE "
+                                + "DepartmentID" + " = ?";
                         try (PreparedStatement preparedStatements = connection.prepareStatement(query2)) {
                             preparedStatements.setInt(1, deptid);
                             try (ResultSet resultSets = preparedStatements.executeQuery()) {
@@ -77,25 +73,33 @@ public class logincontroller implements Initializable {
                     e.printStackTrace();
                 }
 
-
-
                 Stage stage = new Stage();
                 ChartDisplayApp page = new ChartDisplayApp();
 
                 page.start(stage);
             } else {
                 // Create an alert
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("Your are not registered yet.");
+                if (isInteger(username)) {
+                    Alert alert2 = new Alert(AlertType.INFORMATION);
+                    alert2.setTitle("Information Dialog");
+                    alert2.setHeaderText(null);
+                    alert2.setContentText("You Entered invalid name!");
+                    alert2.showAndWait();
+                } else {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Your are not registered yet.");
 
-                // Show the alert
-                alert.showAndWait();
+                    // Show the alert
+                    alert.showAndWait();
 
-                Stage stage = new Stage();
-                CourseEntryApp page = new CourseEntryApp();
-                page.start(stage);
+                    Stage stage = new Stage();
+                    CourseEntryApp page = new CourseEntryApp();
+                    page.start(stage);
+
+                }
+
             }
 
         } catch (SQLException ex) {
@@ -104,8 +108,11 @@ public class logincontroller implements Initializable {
     }
 
     // Method to check if a specific ID exists in a table
-    private static boolean idExists(Connection connection, String tableName, String idColumnName, String nameColumnName, int id, String name) {
-        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + idColumnName + " = ? AND " + nameColumnName + " = ?";;
+    private static boolean idExists(Connection connection, String tableName, String idColumnName, String nameColumnName,
+            int id, String name) {
+        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + idColumnName + " = ? AND " + nameColumnName
+                + " = ?";
+        ;
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             preparedStatement.setString(2, name);
@@ -126,9 +133,19 @@ public class logincontroller implements Initializable {
         currentStage.close();
         corseC.start(stage);
     }
-     @Override
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    private static boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 }

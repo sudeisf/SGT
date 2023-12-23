@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -23,6 +25,38 @@ import javafx.stage.Stage;
 
 
 public class CourseEntryController implements Initializable {
+
+    public static float introToPro;
+        public static float CalculusText;
+        public static float PhysicsText;
+        public static float dsaText;
+        public static float linearAlgebraText;
+        public static float magnetismText;
+
+        public static float AlgorithmText;
+        public static float EquationText;
+        public static float opticsText;
+        public static float dataBText;
+        public static float numTheoryText;
+        public static float mechanicsText;
+
+        public static float SWEText;
+        public static float statisticsText;
+        public static float thermodynamicsTexr;
+        public static float NetworkText;
+        public static float GthoryText;
+        public static float QmechanicsText;
+
+        public static int studId;
+        public static int department_feild;
+
+        public static String StringCheck[] = new String[21];
+        public static boolean check = false;
+        public static boolean check2 = true;
+
+        public static ObservableList<User2> list = FXCollections.observableArrayList();   
+        public static ObservableList<User3> list2 = FXCollections.observableArrayList();
+        public static ObservableList<User4> list3 = FXCollections.observableArrayList();
 
 
     @FXML
@@ -200,153 +234,173 @@ public class CourseEntryController implements Initializable {
     @FXML
     public void nextToLogin(ActionEvent event) throws SQLException {
 
+        try  {
+            introToPro = Float.parseFloat(IntroToProgrammingTextField.getText());
+            CalculusText = Float.parseFloat(CalculusTextFeIld.getText());
+            PhysicsText = Float.parseFloat(PhysicsTextFeild.getText());
+            dsaText = Float.parseFloat(dsaTextFeild.getText());
+            linearAlgebraText = Float.parseFloat(linearAlgebraTextFeild.getText());
+            magnetismText = Float.parseFloat(magnetismTextFeild.getText());
+   
+           AlgorithmText = Float.parseFloat(AlgorithmTextField.getText());
+            EquationText = Float.parseFloat(EquationTextFeild.getText());
+           opticsText = Float.parseFloat(opticsTextFeild.getText());
+           dataBText = Float.parseFloat(dataBTextFeild.getText());
+           numTheoryText = Float.parseFloat(numTheoryTextFeild.getText());
+           mechanicsText = Float.parseFloat(mechanicsTextFeild.getText());
+   
+           SWEText = Float.parseFloat(SweTextFeild.getText());
+           statisticsText = Float.parseFloat(statisticsTextFeild.getText());
+           thermodynamicsTexr = Float.parseFloat(thermodynamicsTexrFeild.getText());
+           NetworkText = Float.parseFloat(NetworkTextFeild.getText());
+           GthoryText = Float.parseFloat(GthoryTextFeild.getText());
+            QmechanicsText = Float.parseFloat(QmechanicsTextFeild.getText());
+   
+           studId = Integer.parseInt(studentID.getText());
+           department_feild = Integer.parseInt(department.getText());
+           check = true;
+           } catch (Exception e) {
+               
+               Alert alert = new Alert(AlertType.INFORMATION);
+               alert.setTitle("Information Dialog");
+               alert.setHeaderText(null);
+               alert.setContentText("ERROR!! You entered invalid input Please try again");
+               alert.showAndWait();
+           }
+          
+          if (check){
+           //label text getter for the first semester
+           String programingLabel = programming.getText();
+           StringCheck[0] = programingLabel;
+           String calculusLabel = Calculus.getText();
+           StringCheck[1] = calculusLabel;
+           String physics = Physics.getText();
+           StringCheck[2] = physics;
+           String Dsa = dsa.getText();
+           StringCheck[3] = Dsa;
+           String linearAlgeb = linearAlgebra.getText();
+           StringCheck[4] = linearAlgeb;
+           String magnet = magnetism.getText();
+           StringCheck[5] = magnet;
+   
+           String algorithm = Algorithms.getText();
+           StringCheck[6] = algorithm;
+           String Dequations = Deferential_Equations.getText();
+           StringCheck[7] = Dequations;
+           String opticslabel = Optics.getText();
+           StringCheck[8] = opticslabel;
+           String database_manament_label = Database_management.getText();
+           StringCheck[9] = database_manament_label;
+           String number_theory_label = Number_theory.getText();
+           StringCheck[10] = number_theory_label;
+           String mechanicslabel = Mechanics.getText();
+           StringCheck[11] = mechanicslabel;
+   //semester 3 label getter
+           String swelabel = Software_engineering.getText();
+           StringCheck[12] = swelabel;
+           String statisticslabel = statistics.getText();
+           StringCheck[13] = statisticslabel;
+           String thermolabel = Thermodynamics.getText();
+           StringCheck[14] = thermolabel;
+           String network = ComputerNewtorks.getText();
+           StringCheck[15] = network;
+           String g_thorylabel = Graph_theory.getText();
+           StringCheck[16] = g_thorylabel;
+           String Qmechanicslabel = Quantum_mechanics.getText();
+           StringCheck[17] = Qmechanicslabel;
+   
+           //course entry
+           String firstname = Firstname.getText();
+           StringCheck[18] = firstname;
+           String lastN = lastname.getText();
+           StringCheck[19] = lastN;
+           String Gender = gender.getText();
+           StringCheck[20] = Gender;
+   
+               // Add the data to the User2 list nop
+             
+             
+           list.addAll(
+                     new User2("Introduction to Programming",introToPro),
+                     new User2("Calculus I",CalculusText),
+                     new User2("data structure",PhysicsText),
+                     new User2("Physics 101",dsaText),
+                     new User2("Linear Algebra",linearAlgebraText),
+                     new User2("Electricity and Magnetism",magnetismText)
+             );
+             list2.addAll(
+                     new User3("Algorithms",AlgorithmText),
+                     new User3("Deferential Equations",EquationText),
+                     new User3("Optics",opticsText),
+                     new User3("Database management",dataBText),
+                     new User3("Number theory",numTheoryText),
+                     new User3("Mechanics",mechanicsText)
+             );
+             list3.addAll(
+                     new User4("Software engineering",SWEText),
+                     new User4("probablity and statistics",statisticsText),
+                     new User4("Thermodynamics",thermodynamicsTexr),
+                     new User4("Computer networks",NetworkText),
+                     new User4("Graph theory",GthoryText),
+                     new User4("Quantum mechanics",QmechanicsText)
+             );
+             Connection conn = DriverManager.getConnection("jdbc:sqlite:student1.db");
+           // first semester to data base
+               database.insertScoreData(conn,studId,100,programingLabel,firstname,introToPro);
+               database.insertScoreData(conn,studId, 101, calculusLabel,firstname,CalculusText);
+               database.insertScoreData(conn,studId, 102, physics,firstname,PhysicsText);
+               database.insertScoreData(conn,studId, 103, Dsa,firstname,dsaText);
+               database.insertScoreData(conn,studId, 104, linearAlgeb,firstname,linearAlgebraText);
+               database.insertScoreData(conn,studId, 105, magnet,firstname,magnetismText);
+     // second semester
+               database.insertScoreData(conn,studId, 106, algorithm,firstname,AlgorithmText);
+               database.insertScoreData(conn,studId, 107, Dequations,firstname,EquationText);
+               database.insertScoreData(conn,studId, 108, opticslabel,firstname,opticsText);
+               database.insertScoreData(conn,studId, 109, database_manament_label,firstname,dataBText);
+               database.insertScoreData(conn,studId, 110, number_theory_label,firstname,numTheoryText);
+               database.insertScoreData(conn,studId, 111, mechanicslabel,firstname,mechanicsText);
+   //third semester
+               database.insertScoreData(conn,studId, 112, swelabel,firstname,SWEText);
+               database.insertScoreData(conn,studId, 113, statisticslabel,firstname,statisticsText);
+               database.insertScoreData(conn,studId, 114, thermolabel,firstname,thermodynamicsTexr);
+               database.insertScoreData(conn,studId, 115, network,firstname,NetworkText);
+               database.insertScoreData(conn,studId, 116, g_thorylabel,firstname,GthoryText);
+               database.insertScoreData(conn,studId, 117, Qmechanicslabel,firstname,QmechanicsText);
+   
+   
+           if (firstname == null || lastname == null || department == null ||  Gender == null) {
+               System.err.println("Error: One or more TextField is null.");
+               return;
+           }
+   
+   
+           String url = "jdbc:sqlite:student1.db";
+   // updating the student class
+           try (Connection connection = DriverManager.getConnection(url);
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO Students (StudentID, FirstName, LastName, Sex, DepartmentID) VALUES (?,?,?,?,?)")) {
+   
+               statement.setInt(1, studId);
+               statement.setString(2, firstname);
+               statement.setString(3, lastN);
+               statement.setString(4, Gender);
+               statement.setInt(5, department_feild);
+   
+               statement.executeUpdate();
+   
+           } catch (SQLException e) {
+               System.out.println(e.getLocalizedMessage());
+           }
+   
+   
+           // Update the TableView
+           tableView1.setItems(list);
+           tableView2.setItems(list2);
+           tableView3.setItems(list3);
+          }
+        }   
 
-
-
-
-        // Retrieve data from text fields
-
-        float introToPro = Float.parseFloat(IntroToProgrammingTextField.getText());
-        float CalculusText = Float.parseFloat(CalculusTextFeIld.getText());
-        float PhysicsText = Float.parseFloat(PhysicsTextFeild.getText());
-        float dsaText = Float.parseFloat(dsaTextFeild.getText());
-        float linearAlgebraText = Float.parseFloat(linearAlgebraTextFeild.getText());
-        float magnetismText = Float.parseFloat(magnetismTextFeild.getText());
-
-        float AlgorithmText = Float.parseFloat(AlgorithmTextField.getText());
-        float EquationText = Float.parseFloat(EquationTextFeild.getText());
-        float opticsText = Float.parseFloat(opticsTextFeild.getText());
-        float dataBText = Float.parseFloat(dataBTextFeild.getText());
-        float numTheoryText = Float.parseFloat(numTheoryTextFeild.getText());
-        float mechanicsText = Float.parseFloat(mechanicsTextFeild.getText());
-
-        float SWEText = Float.parseFloat(SweTextFeild.getText());
-        float statisticsText = Float.parseFloat(statisticsTextFeild.getText());
-        float thermodynamicsTexr = Float.parseFloat(thermodynamicsTexrFeild.getText());
-        float NetworkText = Float.parseFloat(NetworkTextFeild.getText());
-        float GthoryText = Float.parseFloat(GthoryTextFeild.getText());
-        float QmechanicsText = Float.parseFloat(QmechanicsTextFeild.getText());
-
-
-
-//label text getter for the first semester
-        String programingLabel = programming.getText();
-        String calculusLabel = Calculus.getText();
-        String physics = Physics.getText();
-        String Dsa = dsa.getText();
-        String linearAlgeb = linearAlgebra.getText();
-        String magnet = magnetism.getText();
-
-        String algorithm = Algorithms.getText();
-        String Dequations = Deferential_Equations.getText();
-        String opticslabel = Optics.getText();
-        String database_manament_label = Database_management.getText();
-        String number_theory_label = Number_theory.getText();
-        String mechanicslabel = Mechanics.getText();
-//semester 3 label getter
-        String swelabel = Software_engineering.getText();
-        String statisticslabel = statistics.getText();
-        String thermolabel = Thermodynamics.getText();
-        String network = ComputerNewtorks.getText();
-        String g_thorylabel = Graph_theory.getText();
-        String Qmechanicslabel = Quantum_mechanics.getText();
-
-
-
-
-        //course entry
-        String firstname = Firstname.getText();
-        String lastN = lastname.getText();
-        int studId = Integer.parseInt(studentID.getText());
-        int department_feild = Integer.parseInt(department.getText());
-        String Gender = gender.getText();
-
-        // Add the data to the User2 list nop
-          list.addAll(
-                  new User2("Introduction to Programming",introToPro),
-                  new User2("Calculus I",CalculusText),
-                  new User2("data structure",PhysicsText),
-                  new User2("Physics 101",dsaText),
-                  new User2("Linear Algebra",linearAlgebraText),
-                  new User2("Electricity and Magnetism",magnetismText)
-          );
-          list2.addAll(
-                  new User3("Algorithms",AlgorithmText),
-                  new User3("Deferential Equations",EquationText),
-                  new User3("Optics",opticsText),
-                  new User3("Database management",dataBText),
-                  new User3("Number theory",numTheoryText),
-                  new User3("Mechanics",mechanicsText)
-          );
-          list3.addAll(
-                  new User4("Software engineering",SWEText),
-                  new User4("probablity and statistics",statisticsText),
-                  new User4("Thermodynamics",thermodynamicsTexr),
-                  new User4("Computer networks",NetworkText),
-                  new User4("Graph theory",GthoryText),
-                  new User4("Quantum mechanics",QmechanicsText)
-          );
-          Connection conn = DriverManager.getConnection("jdbc:sqlite:student1.db");
-        // first semester to data base
-            database.insertScoreData(conn,studId,100,programingLabel,firstname,introToPro);
-            database.insertScoreData(conn,studId, 101, calculusLabel,firstname,CalculusText);
-            database.insertScoreData(conn,studId, 102, physics,firstname,PhysicsText);
-            database.insertScoreData(conn,studId, 103, Dsa,firstname,dsaText);
-            database.insertScoreData(conn,studId, 104, linearAlgeb,firstname,linearAlgebraText);
-            database.insertScoreData(conn,studId, 105, magnet,firstname,magnetismText);
-  // second semester
-            database.insertScoreData(conn,studId, 106, algorithm,firstname,AlgorithmText);
-            database.insertScoreData(conn,studId, 107, Dequations,firstname,EquationText);
-            database.insertScoreData(conn,studId, 108, opticslabel,firstname,opticsText);
-            database.insertScoreData(conn,studId, 109, database_manament_label,firstname,dataBText);
-            database.insertScoreData(conn,studId, 110, number_theory_label,firstname,numTheoryText);
-            database.insertScoreData(conn,studId, 111, mechanicslabel,firstname,mechanicsText);
-//third semester
-            database.insertScoreData(conn,studId, 112, swelabel,firstname,SWEText);
-            database.insertScoreData(conn,studId, 113, statisticslabel,firstname,statisticsText);
-            database.insertScoreData(conn,studId, 114, thermolabel,firstname,thermodynamicsTexr);
-            database.insertScoreData(conn,studId, 115, network,firstname,NetworkText);
-            database.insertScoreData(conn,studId, 116, g_thorylabel,firstname,GthoryText);
-            database.insertScoreData(conn,studId, 117, Qmechanicslabel,firstname,QmechanicsText);
-
-
-        if (firstname == null || lastname == null || department == null ||  Gender == null) {
-            System.err.println("Error: One or more TextField is null.");
-            return;
-        }
-
-
-        String url = "jdbc:sqlite:student1.db";
-// updating the student class
-        try (Connection connection = DriverManager.getConnection(url);
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO Students (StudentID, FirstName, LastName, Sex, DepartmentID) VALUES (?,?,?,?,?)")) {
-
-            statement.setInt(1, studId);
-            statement.setString(2, firstname);
-            statement.setString(3, lastN);
-            statement.setString(4, Gender);
-            statement.setInt(5, department_feild);
-
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-
-
-        // Update the TableView
-        tableView1.setItems(list);
-        tableView2.setItems(list2);
-        tableView3.setItems(list3);
-
-
-    }
-
-
-    ObservableList<User2> list = FXCollections.observableArrayList();
-    ObservableList<User3> list2 = FXCollections.observableArrayList();
-    ObservableList<User4> list3 = FXCollections.observableArrayList();
+       
 
 
     @Override

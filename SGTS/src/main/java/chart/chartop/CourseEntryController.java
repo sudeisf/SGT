@@ -229,7 +229,7 @@ public class CourseEntryController implements Initializable {
 
 
 
-
+//label text getter
         String programingLabel = programming.getText();
         String calculusLabel = Calculus.getText();
         String physics = Physics.getText();

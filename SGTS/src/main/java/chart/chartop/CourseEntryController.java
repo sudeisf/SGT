@@ -243,7 +243,7 @@ public class CourseEntryController implements Initializable {
         String database_manament_label = Database_management.getText();
         String number_theory_label = Number_theory.getText();
         String mechanicslabel = Mechanics.getText();
-
+//semester 3 label getter
         String swelabel = Software_engineering.getText();
         String statisticslabel = statistics.getText();
         String thermolabel = Thermodynamics.getText();

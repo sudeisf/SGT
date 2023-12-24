@@ -303,8 +303,8 @@ public class chartController implements Initializable {
 
         course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
         score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));
-        gradeColumn.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
-        gradeValueColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
+        //gradeColumn.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
+       // gradeValueColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
 
         ObservableList<User> list = FXCollections.observableArrayList(
             new User(coursename1[0],scorevalue1[0]),
@@ -318,8 +318,8 @@ public class chartController implements Initializable {
       
       course2.setCellValueFactory(new PropertyValueFactory<person,String>("course"));
       score2.setCellValueFactory(new PropertyValueFactory<person, Integer>("score"));
-        gradeColumn2.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
-        gradeValueColumn2.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
+       // gradeColumn2.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
+        //gradeValueColumn2.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
 
         ObservableList<person> list2 = FXCollections.observableArrayList(
             new person(coursename2[0],scorevalue2[0]),
@@ -333,8 +333,8 @@ public class chartController implements Initializable {
       
       course3.setCellValueFactory(new PropertyValueFactory<person2,String>("course"));
       score3.setCellValueFactory(new PropertyValueFactory<person2, Integer>("score"));
-        gradeColumn3.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
-        gradeValueColum3.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
+        //gradeColumn3.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
+        //gradeValueColum3.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
 
 
         ObservableList<person2> list3;

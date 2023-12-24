@@ -25,12 +25,10 @@
              <NumberAxis side="LEFT" />
            </yAxis>
          </BarChart>
-         <TableView fx:id="table1" layoutX="237.0" layoutY="35.0" onMouseClicked="#handleMouseClicked" prefHeight="200.0" prefWidth="291.0">
+         <TableView fx:id="table1" layoutX="237.0" layoutY="35.0" onMouseClicked="#handleMouseClicked" prefHeight="200.0" prefWidth="299.0">
            <columns>
-             <TableColumn fx:id="course" prefWidth="194.4000244140625" text="course" />
-             <TableColumn fx:id="score" minWidth="0.0" prefWidth="98.4000244140625" text="score" />
-               <TableColumn fx:id="gradeColumn" prefWidth="75.0" text="grade" />
-               <TableColumn fx:id="gradeValueColumn" prefWidth="134.20001220703125" text="grade value" />
+             <TableColumn fx:id="course" prefWidth="148.0" text="course" />
+             <TableColumn fx:id="score" minWidth="0.0" prefWidth="88.0" text="score" />
            </columns>
          </TableView>
          <Label layoutX="17.0" layoutY="62.0" prefHeight="40.0" prefWidth="108.0" text="Student Name:" textFill="#ede1e1">
@@ -71,16 +69,12 @@
            <columns>
              <TableColumn fx:id="course2" prefWidth="75.0" text="course" />
              <TableColumn fx:id="score2" prefWidth="75.0" text="score" />
-               <TableColumn fx:id="gradeColumn2" prefWidth="75.0" text="grade" />
-               <TableColumn fx:id="gradeValueColumn2" prefWidth="75.0" text="grade value" />
            </columns>
          </TableView>
          <TableView fx:id="table3" layoutX="782.0" layoutY="35.0" onMouseClicked="#Table3MouseClicked" prefHeight="200.0" prefWidth="200.0">
            <columns>
              <TableColumn fx:id="course3" prefWidth="75.0" text="course" />
              <TableColumn fx:id="score3" prefWidth="75.0" text="score" />
-               <TableColumn fx:id="gradeColumn3" prefWidth="75.0" text="grade" />
-               <TableColumn fx:id="gradeValueColumn3" prefWidth="75.0" text="grade value" />
            </columns>
          </TableView>
          <Label layoutX="300.0" layoutY="14.0" text="Semesiter 1" />

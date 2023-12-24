@@ -2,13 +2,12 @@ package chart.chartop;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -80,10 +79,15 @@ public class logincontroller implements Initializable {
                             }
                         }
                     }
-                } catch (SQLException e) {
+                // Going to the Chart page
+                Stage stage = new Stage();
+                ChartDisplayApp page = new ChartDisplayApp();
+                page.start(stage);
+                } 
+                catch (SQLException e) {
                     e.printStackTrace();
                 }
-
+               
 
             } else {
                 if (check) {
@@ -95,17 +99,44 @@ public class logincontroller implements Initializable {
                         alert2.setContentText("You Entered invalid name! Please try again");
                         alert2.showAndWait();
                     } else {
+                        if (idExists(connection, "Students", "StudentID", "FirstName", userId)){
+
+                             // Alert message for incorrect id
+                             Alert alert = new Alert(AlertType.INFORMATION);
+                             alert.setTitle("Information Dialog");
+                             alert.setHeaderText(null);
+                             alert.setContentText("You entered Incorrect Name !! please correct your name.");
+                             alert.showAndWait();
+                         
+                        }
+                        else if(idExists(connection, "Students", "StudentID", "FirstName", username)){
+                             // Alert message for incorrect id
+                             Alert alert = new Alert(AlertType.INFORMATION);
+                             alert.setTitle("Information Dialog");
+                             alert.setHeaderText(null);
+                             alert.setContentText("You entered Incorrect ID !! please correct your ID.");
+                             alert.showAndWait();
+
+                        } else{
+                        // Showing the alert message
                         Alert alert = new Alert(AlertType.INFORMATION);
                         alert.setTitle("Information Dialog");
                         alert.setHeaderText(null);
                         alert.setContentText("Your are not registered yet.");
 
-                        // Show the alert
                         alert.showAndWait();
-
+                        
+                        // Going to the courseEntry page
                         Stage stage = new Stage();
                         CourseEntryApp page = new CourseEntryApp();
                         page.start(stage);
+                        
+                        // closing the login page
+                        Scene scene = ID.getScene();
+                        Stage currentStage = (Stage) scene.getWindow();
+                        currentStage.close();
+                        }
+                       
                     }
 
                 }
@@ -115,15 +146,10 @@ public class logincontroller implements Initializable {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        Stage stage = new Stage();
-        Scene scene = ID.getScene();
-        Stage currentStage = (Stage) scene.getWindow();
-        currentStage.close();
-        ChartDisplayApp page = new ChartDisplayApp();
-        page.start(stage);
+
     }
 
-    // Method to check if a specific ID exists in a table
+    // Method to check if a specific ID and Name exists in a table
     private static boolean idExists(Connection connection, String tableName, String idColumnName, String nameColumnName,
             int id, String name) {
         String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + idColumnName + " = ? AND " + nameColumnName
@@ -140,6 +166,39 @@ public class logincontroller implements Initializable {
             return false;
         }
     }
+    
+    /*  Method to check if a specific Id exist in table 
+    this method help us to know if the user entered incorrect name but correct name(Example of polymorphism)*/
+    private static boolean idExists(Connection connection, String tableName, String idColumnName, String nameColumnName,
+            int id) {
+        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + idColumnName + " = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    /*  Method to check if a specific name exist in table 
+    this method help us to know if the user entered incorrect ID but correct name(Example of polymorphism)*/
+     private static boolean idExists(Connection connection, String tableName, String idColumnName, String nameColumnName,
+            String name) {
+        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + nameColumnName + " = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, name);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public void registerPage() throws IOException {
         Stage stage = new Stage();

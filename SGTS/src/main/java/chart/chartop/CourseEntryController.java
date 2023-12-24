@@ -218,7 +218,7 @@ public class CourseEntryController implements Initializable {
     @FXML
     private TextField thermodynamicsTexrFeild;
 
-  //this is button function that close the current page and update the new one
+  //This is button function that close the current page and update the new one
     @FXML
     void nextToLog(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -230,7 +230,7 @@ public class CourseEntryController implements Initializable {
 
 
     }
-    // this function saves data in to the database and show case the values inside the tables in gui 
+    // This function saves data in to the database and show case the values inside the tables in gui 
     @FXML
     public void nextToLogin(ActionEvent event) throws SQLException {
 
@@ -316,10 +316,19 @@ public class CourseEntryController implements Initializable {
            StringCheck[19] = lastN;
            String Gender = gender.getText();
            StringCheck[20] = Gender;
-   
-               // Add the data to the User2 list nop
-             
-             
+
+           if(isInteger(StringCheck)){
+               Alert alert = new Alert(AlertType.INFORMATION);
+               alert.setTitle("Information Dialog");
+               alert.setHeaderText(null);
+               alert.setContentText("ERROR!! You entered invalid input Please try again");
+               alert.showAndWait();
+               check2 = false;
+           }
+
+           if (check2){
+            
+            // Add the data to the User2 list nop
            list.addAll(
                      new User2("Introduction to Programming",introToPro),
                      new User2("Calculus I",CalculusText),
@@ -401,7 +410,7 @@ public class CourseEntryController implements Initializable {
         }   
 
        
-
+           }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -418,6 +427,25 @@ public class CourseEntryController implements Initializable {
         tableView1.setItems(list);
         tableView2.setItems(list2);
         tableView3.setItems(list3);
+    }
+
+    public static boolean isInteger(String input[]) {
+        int i =0;
+        int j = 0;
+        while(i<=20){
+             try {
+            Integer.parseInt(input[i]);
+        } catch (NumberFormatException e) {
+            j++;
+        }
+        i++;
+        }
+        if (j == 20){
+            return false;
+        } else {
+            return true;
+        }
+       
     }
     
 }

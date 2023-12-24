@@ -1,5 +1,6 @@
 package chart.chartop;
 
+// used to structure of observable list that are used to display data on tableview
 public class person {
     private final String course3;
     private final int score3;

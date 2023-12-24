@@ -30,6 +30,6 @@ public class person2Test {
         assertEquals(95, score);
     }
 
-    // Add more test cases as needed
+ 
 
 }

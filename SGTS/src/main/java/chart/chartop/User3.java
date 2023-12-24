@@ -1,5 +1,7 @@
 package chart.chartop;
 
+// Used in the ObservableList<User3> to display data in the TableView for Semester 2.
+
 public class User3 {
     private final String tableView2col1;
 

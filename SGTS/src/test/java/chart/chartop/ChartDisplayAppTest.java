@@ -39,7 +39,6 @@ public class ChartDisplayAppTest {
         assertEquals(course, actualCourse);
         assertEquals(score, actualScore);
 
-        // Optionally, verify that certain methods were called
         verify(mockedUser, times(1)).getCourse();
         verify(mockedUser, times(1)).getScore();
     }

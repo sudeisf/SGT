@@ -26,7 +26,8 @@ import javafx.stage.Stage;
 
 public class CourseEntryController implements Initializable {
 
-    public static float introToPro;
+        // This variable store the score entered by user
+        public static float introToPro;
         public static float CalculusText;
         public static float PhysicsText;
         public static float dsaText;
@@ -259,8 +260,7 @@ public class CourseEntryController implements Initializable {
            studId = Integer.parseInt(studentID.getText());
            department_feild = Integer.parseInt(department.getText());
            check = true;
-           } catch (Exception e) {
-               
+           } catch (Exception e) {  // Showing the error message when there is exception
                Alert alert = new Alert(AlertType.INFORMATION);
                alert.setTitle("Information Dialog");
                alert.setHeaderText(null);
@@ -268,8 +268,7 @@ public class CourseEntryController implements Initializable {
                alert.showAndWait();
            }
           
-          if (check){
-           //label text getter for the first semester
+          if (check){   // check if the correct is entered
            String programingLabel = programming.getText();
            StringCheck[0] = programingLabel;
            String calculusLabel = Calculus.getText();
@@ -295,7 +294,8 @@ public class CourseEntryController implements Initializable {
            StringCheck[10] = number_theory_label;
            String mechanicslabel = Mechanics.getText();
            StringCheck[11] = mechanicslabel;
-   //semester 3 label getter
+
+           //semester 3 label getter
            String swelabel = Software_engineering.getText();
            StringCheck[12] = swelabel;
            String statisticslabel = statistics.getText();
@@ -317,7 +317,7 @@ public class CourseEntryController implements Initializable {
            String Gender = gender.getText();
            StringCheck[20] = Gender;
 
-           if(isInteger(StringCheck)){
+           if(isInteger(StringCheck)){  // showing the error message the entered for string variable is integer
                Alert alert = new Alert(AlertType.INFORMATION);
                alert.setTitle("Information Dialog");
                alert.setHeaderText(null);
@@ -326,7 +326,7 @@ public class CourseEntryController implements Initializable {
                check2 = false;
            }
 
-           if (check2){
+           if (check2){   // check if the correct data is entered 
             
             // Add the data to the User2 list nop
            list.addAll(
@@ -361,14 +361,14 @@ public class CourseEntryController implements Initializable {
                database.insertScoreData(conn,studId, 103, Dsa,firstname,dsaText);
                database.insertScoreData(conn,studId, 104, linearAlgeb,firstname,linearAlgebraText);
                database.insertScoreData(conn,studId, 105, magnet,firstname,magnetismText);
-     // second semester
+           // second semester
                database.insertScoreData(conn,studId, 106, algorithm,firstname,AlgorithmText);
                database.insertScoreData(conn,studId, 107, Dequations,firstname,EquationText);
                database.insertScoreData(conn,studId, 108, opticslabel,firstname,opticsText);
                database.insertScoreData(conn,studId, 109, database_manament_label,firstname,dataBText);
                database.insertScoreData(conn,studId, 110, number_theory_label,firstname,numTheoryText);
                database.insertScoreData(conn,studId, 111, mechanicslabel,firstname,mechanicsText);
-   //third semester
+            //third semester
                database.insertScoreData(conn,studId, 112, swelabel,firstname,SWEText);
                database.insertScoreData(conn,studId, 113, statisticslabel,firstname,statisticsText);
                database.insertScoreData(conn,studId, 114, thermolabel,firstname,thermodynamicsTexr);
@@ -384,7 +384,7 @@ public class CourseEntryController implements Initializable {
    
    
            String url = "jdbc:sqlite:student1.db";
-   // updating the student class
+           // updating the student class
            try (Connection connection = DriverManager.getConnection(url);
                 PreparedStatement statement = connection.prepareStatement(
                         "INSERT INTO Students (StudentID, FirstName, LastName, Sex, DepartmentID) VALUES (?,?,?,?,?)")) {
@@ -429,7 +429,7 @@ public class CourseEntryController implements Initializable {
         tableView3.setItems(list3);
     }
 
-    public static boolean isInteger(String input[]) {
+    public static boolean isInteger(String input[]) { // A method that take array of string variable and handle exception
         int i =0;
         int j = 0;
         while(i<=20){

@@ -232,8 +232,9 @@ public class chartController implements Initializable {
       try (Connection connection = DriverManager.getConnection(url1)){
 
        String query2 = "Select CourseName From Courses ORDER BY CourseID ";
-  
-        try (PreparedStatement preparedStatements = connection.prepareStatement(query2)) {
+       
+       // The below code helps to fetch the course from the database store it into array
+       try (PreparedStatement preparedStatements = connection.prepareStatement(query2)) {
        int i = 0;
        int j = 0;
        int k = 0;
@@ -265,7 +266,8 @@ public class chartController implements Initializable {
       } catch (SQLException e) {
         e.printStackTrace();
     }
-
+        
+        // This code fetch the score from database and store it into array 
         try (Connection connection = DriverManager.getConnection(url1)){
             String query3 = "SELECT Score FROM Scores WHERE StudentID " +" = "+ logincontroller.user_i+ " ORDER BY CourseId";
 
@@ -303,8 +305,6 @@ public class chartController implements Initializable {
 
         course.setCellValueFactory(new PropertyValueFactory<User,String>("course"));
         score.setCellValueFactory(new PropertyValueFactory<User, Integer>("score"));
-        //gradeColumn.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
-       // gradeValueColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
 
         ObservableList<User> list = FXCollections.observableArrayList(
             new User(coursename1[0],scorevalue1[0]),
@@ -318,9 +318,7 @@ public class chartController implements Initializable {
       
       course2.setCellValueFactory(new PropertyValueFactory<person,String>("course"));
       score2.setCellValueFactory(new PropertyValueFactory<person, Integer>("score"));
-       // gradeColumn2.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
-        //gradeValueColumn2.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
-
+       
         ObservableList<person> list2 = FXCollections.observableArrayList(
             new person(coursename2[0],scorevalue2[0]),
             new person(coursename2[1],scorevalue2[1]),
@@ -333,9 +331,7 @@ public class chartController implements Initializable {
       
       course3.setCellValueFactory(new PropertyValueFactory<person2,String>("course"));
       score3.setCellValueFactory(new PropertyValueFactory<person2, Integer>("score"));
-        //gradeColumn3.setCellValueFactory(new PropertyValueFactory<User, String>("grade"));  // Assuming gradeColumn is the TableColumn for displaying grades
-        //gradeValueColum3.setCellValueFactory(new PropertyValueFactory<User, Integer>("gradeValue"));  // Assuming gradeValueColumn is the TableColumn for displaying grade values
-
+        
 
         ObservableList<person2> list3;
         list3 = FXCollections.observableArrayList(
@@ -347,8 +343,9 @@ public class chartController implements Initializable {
              new person2(coursename3[5],scorevalue3[5])
 
        );
-
-        table1.setItems(list);
+    
+      // putting the data into table of the scene builder
+      table1.setItems(list);
       table3.setItems(list3);
       table2.setItems(list2);
       studentname.setText(logincontroller.user);

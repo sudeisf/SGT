@@ -14,12 +14,9 @@ public class User {
     }
 
 
-    //Getter method to retrieve the course.
     public String getCourse() {
         return course2;
     }
-
-    //Getter method to retrieve the score.
 
     public int getScore() {
         return score2;

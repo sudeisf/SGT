@@ -1,6 +1,7 @@
 package chart.chartop;
   
 
+// used to structure of observable list
 public class person2 {
       private final String course3;
       private final int score3;

@@ -1,6 +1,5 @@
 package chart.chartop;
 
-import chart.chartop.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,6 +29,5 @@ public class UserTest {
         assertEquals(85, score);
     }
 
-    // Add more test cases as needed
 
 }

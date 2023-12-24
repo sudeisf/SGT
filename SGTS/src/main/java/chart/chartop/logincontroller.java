@@ -60,8 +60,8 @@ public class logincontroller implements Initializable {
 
         user = username;
         user_i = userId;
-
-        //
+        
+        // checking if the entered name and id is correct
         try (Connection connection = DriverManager.getConnection(url)) {
 
             if (idExists(connection, "Students", "StudentID", "FirstName", userId, username)) {
@@ -208,13 +208,13 @@ public class logincontroller implements Initializable {
         currentStage.close();
         corse.start(stage);
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    private static boolean isInteger(String input) {
+    private static boolean isInteger(String input) { // A method that used to handle exception
         try {
             Integer.parseInt(input);
             return true;

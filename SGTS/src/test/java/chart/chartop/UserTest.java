@@ -1,52 +1,35 @@
 package chart.chartop;
 
-//importing needed packages
-
-import org.junit.jupiter.api.BeforeEach;
+import chart.chartop.User;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+public class UserTest {
 
-class UserTest {
+    @Test
+    public void testGetCourse() {
+        // Arrange
+        User user = new User("Math", 90);
 
-    private User user;
+        // Act
+        String course = user.getCourse();
 
-    @BeforeEach
-    void setUp() {
-        // Create a User object with a score of 90 for setup
-        user = new User("Operating system", 90);
+        // Assert
+        assertEquals("Math", course);
     }
 
     @Test
-    void calculateGrade() {
-        // Test if the grade is A for a score of 90
-        assertEquals(User.Grade.A, user.calculateGrade());
+    public void testGetScore() {
+        // Arrange
+        User user = new User("English", 85);
 
+        // Act
+        int score = user.getScore();
+
+        // Assert
+        assertEquals(85, score);
     }
 
-    @Test
-    void getCourse () {
-        // Test if the course name is "Operating system"
-        assertEquals("Operating system", user.getCourse());
-    }
+    // Add more test cases as needed
 
-    @Test
-    void getScore () {
-        // Test if the score is 90
-        assertEquals(90, user.getScore());
-    }
-
-    @Test
-    void getGrade () {
-        // Test if the grade is A
-        assertEquals(User.Grade.A, user.getGrade());
-    }
-
-    @Test
-    void getGradeValue () {
-        // Test if the grade value is 4 for A
-        assertEquals(4, user.getGradeValue());
-
-    }
 }

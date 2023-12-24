@@ -84,10 +84,7 @@ public class logincontroller implements Initializable {
                     e.printStackTrace();
                 }
 
-                Stage stage = new Stage();
-                ChartDisplayApp page = new ChartDisplayApp();
 
-                page.start(stage);
             } else {
                 if (check) {
                     // Create an alert
@@ -118,6 +115,12 @@ public class logincontroller implements Initializable {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        Stage stage = new Stage();
+        Scene scene = ID.getScene();
+        Stage currentStage = (Stage) scene.getWindow();
+        currentStage.close();
+        ChartDisplayApp page = new ChartDisplayApp();
+        page.start(stage);
     }
 
     // Method to check if a specific ID exists in a table
@@ -140,11 +143,11 @@ public class logincontroller implements Initializable {
 
     public void registerPage() throws IOException {
         Stage stage = new Stage();
-        Scene scene = login.getScene();
-        CourseEntryApp corseC = new CourseEntryApp();
+        Scene scene = ID.getScene();
+        CourseEntryApp corse = new CourseEntryApp();
         Stage currentStage = (Stage) scene.getWindow();
         currentStage.close();
-        corseC.start(stage);
+        corse.start(stage);
     }
 
     @Override

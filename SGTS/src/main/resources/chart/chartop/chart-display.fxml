@@ -7,33 +7,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="770.0" prefWidth="1016.0" spacing="8.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chart.chartop.chartController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1096.0" spacing="8.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chart.chartop.chartController">
     <padding>
         <Insets bottom="-2.0" left="20.0" right="20.0" top="10.0" />
     </padding>
-   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClicked" prefHeight="743.0" prefWidth="1024.0" style="-fx-background-color: black;">
+   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClicked" prefHeight="743.0" prefWidth="1026.0" style="-fx-background-color: a0b2a6;">
       <children>
-         <BarChart fx:id="ChartBox" alternativeColumnFillVisible="true" barGap="15.0" cache="true" categoryGap="2.0" disable="true" focusTraversable="true" layoutX="71.0" layoutY="279.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="361.0" prefWidth="915.0" style="-fx-bar-gap: 1px;" title="semester-I">
+         <BarChart fx:id="ChartBox" alternativeColumnFillVisible="true" barGap="15.0" cache="true" categoryGap="2.0" disable="true" focusTraversable="true" layoutX="71.0" layoutY="279.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="361.0" prefWidth="915.0" style="-fx-bar-gap: 1px;" title="Data visualizstion">
            <xAxis>
              <CategoryAxis side="BOTTOM" />
            </xAxis>
            <yAxis>
              <NumberAxis side="LEFT" />
            </yAxis>
+            <effect>
+               <Blend />
+            </effect>
          </BarChart>
-         <TableView fx:id="table1" layoutX="237.0" layoutY="35.0" onMouseClicked="#handleMouseClicked" prefHeight="200.0" prefWidth="291.0">
+         <TableView fx:id="table1" layoutX="237.0" layoutY="35.0" onMouseClicked="#handleMouseClicked" prefHeight="200.0" prefWidth="240.0">
            <columns>
-             <TableColumn fx:id="course" prefWidth="194.4000244140625" text="course" />
-             <TableColumn fx:id="score" minWidth="0.0" prefWidth="98.4000244140625" text="score" />
-               <TableColumn prefWidth="75.0" text="Column X" />
-               <TableColumn prefWidth="134.20001220703125" text="Column X" />
+             <TableColumn fx:id="course" prefWidth="148.0" text="course" />
+             <TableColumn fx:id="score" minWidth="0.0" prefWidth="88.0" text="score" />
            </columns>
          </TableView>
-         <Label layoutX="17.0" layoutY="62.0" prefHeight="40.0" prefWidth="108.0" text="Student Name:" textFill="#ede1e1">
+         <Label layoutX="17.0" layoutY="62.0" prefHeight="40.0" prefWidth="108.0" text="Student Name:" textFill="WHITE">
             <font>
                <Font name="Georgia Bold" size="13.0" />
             </font>
@@ -43,12 +45,7 @@
                <Font name="Georgia Bold" size="13.0" />
             </font>
          </Label>
-         <Label layoutX="17.0" layoutY="128.0" prefHeight="40.0" prefWidth="108.0" text="Department :" textFill="#f8f3f3">
-            <font>
-               <Font name="Georgia Bold" size="13.0" />
-            </font>
-         </Label>
-         <Label layoutX="17.0" layoutY="160.0" prefHeight="40.0" prefWidth="108.0" text="Semester :" textFill="#f8f4f4">
+         <Label layoutX="17.0" layoutY="128.0" prefHeight="40.0" prefWidth="108.0" text="Department :" textFill="WHITE">
             <font>
                <Font name="Georgia Bold" size="13.0" />
             </font>
@@ -56,7 +53,6 @@
          <Label fx:id="studentname" layoutX="125.0" layoutY="70.0" prefHeight="25.0" prefWidth="79.0" text="unknown" textFill="#efe4e4" />
          <Label fx:id="studentid" layoutX="107.0" layoutY="104.0" prefHeight="25.0" prefWidth="69.0" text="unknown" textFill="#efefef" />
          <Label fx:id="DepartmentID" layoutX="117.0" layoutY="136.0" prefHeight="25.0" prefWidth="62.0" text="unkown" textFill="#f2ecec" />
-         <Label layoutX="100.0" layoutY="168.0" prefHeight="25.0" prefWidth="39.0" text="1" />
          <Label fx:id="Mean" layoutX="339.0" layoutY="643.0" text="........." textFill="#f6f2f2" />
          <Label fx:id="Median" layoutX="350.0" layoutY="671.0" text="........." textFill="#f8f3f3" />
          <Label layoutX="300.0" layoutY="643.0" text="mean" textFill="#f4efef">
@@ -67,21 +63,30 @@
             <font>
                <Font size="14.0" />
             </font></Label>
-         <TableView fx:id="table2" layoutX="552.0" layoutY="37.0" onMouseClicked="#Table2MouseClicked" prefHeight="200.0" prefWidth="192.0">
+         <TableView fx:id="table2" layoutX="504.0" layoutY="37.0" onMouseClicked="#Table2MouseClicked" prefHeight="200.0" prefWidth="240.0">
            <columns>
-             <TableColumn fx:id="course2" prefWidth="75.0" text="course" />
-             <TableColumn fx:id="score2" prefWidth="75.0" text="score" />
+             <TableColumn fx:id="course2" prefWidth="140.00006103515625" text="course" />
+             <TableColumn fx:id="score2" prefWidth="99.199951171875" text="score" />
            </columns>
          </TableView>
-         <TableView fx:id="table3" layoutX="782.0" layoutY="35.0" onMouseClicked="#Table3MouseClicked" prefHeight="200.0" prefWidth="200.0">
+         <TableView fx:id="table3" layoutX="782.0" layoutY="35.0" onMouseClicked="#Table3MouseClicked" prefHeight="200.0" prefWidth="229.0">
            <columns>
-             <TableColumn fx:id="course3" prefWidth="75.0" text="course" />
-             <TableColumn fx:id="score3" prefWidth="75.0" text="score" />
+             <TableColumn fx:id="course3" prefWidth="144.79998779296875" text="course" />
+             <TableColumn fx:id="score3" prefWidth="84.0" text="score" />
            </columns>
          </TableView>
-         <Label layoutX="300.0" layoutY="14.0" text="Semesiter 1" />
-         <Label layoutX="618.0" layoutY="14.0" text="Semister 2" />
-         <Label layoutX="847.0" layoutY="14.0" text="Semister 3" />
+         <Label layoutX="300.0" layoutY="14.0" text="Semesiter-I" textAlignment="CENTER" textFill="WHITE">
+            <font>
+               <Font name="Cambria Math" size="18.0" />
+            </font></Label>
+         <Label layoutX="577.0" layoutY="14.0" text="Semesiter-II" textFill="WHITE">
+            <font>
+               <Font name="Cambria Math" size="18.0" />
+            </font></Label>
+         <Label layoutX="847.0" layoutY="14.0" text="Semesiter-III" textFill="WHITE">
+            <font>
+               <Font name="Cambria Math" size="18.0" />
+            </font></Label>
       </children>
    </Pane>
 
